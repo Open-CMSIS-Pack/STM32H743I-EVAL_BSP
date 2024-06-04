@@ -1,2 +1,2 @@
 # STM32H743I-EVAL
-STMicroelectronics STM32H743I-Eval Board Support Pack
+STMicroelectronics STM32H743I-EVAL Board Support Pack
