@@ -4,7 +4,7 @@
   <vendor>Keil</vendor>
   <description>STMicroelectronics STM32H7 Series STM32H743I-EVAL Board Support Pack</description>
   <url>https://www.keil.com/pack/</url>
-
+  <repository type="git">https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP.git</repository>
   <license>LICENSE</license>
   <licenseSets>
     <licenseSet id="all" default="true" gating="true">
@@ -13,7 +13,7 @@
   </licenseSets>
 
   <releases>
-    <release version="1.0.0-dev0">
+    <release version="1.0.0-dev">
       Prepared for new CMSIS-Toolbox CubeMX integration
       Board description for STM32H743I-EVAL
       Board Layer for IoT
