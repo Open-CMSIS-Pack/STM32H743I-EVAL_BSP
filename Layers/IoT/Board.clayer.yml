@@ -23,9 +23,6 @@ layer:
   define:
     - CMSIS_target_header: \"STM32H743I-EVAL.h\"
 
-  add-path:
-    - ./
-
   packs:
     - pack: Keil::STM32H7xx_DFP@>=4.0.0-0
     - pack: Keil::STM32H743I-EVAL_BSP@>=1.0.0-0
@@ -53,4 +50,5 @@ layer:
   groups:
     - group: Board
       files:
+        - file: ./STM32H743I-EVAL.h
         - file: ./retarget_stdio.c
