@@ -15,8 +15,8 @@ project:
     - component: ARM::CMSIS-Compiler:STDOUT:Custom
     - component: ARM::CMSIS-Compiler:STDERR:Custom
 
-    - component: Keil::CMSIS Driver:USART
-    - component: Keil::CMSIS Driver:VIO:Board&STM32H743I-EVAL
+    - component: CMSIS Driver:USART
+    - component: CMSIS Driver:VIO:Board&STM32H743I-EVAL
 
   # List of source groups and files added to a project or a layer.
   groups:

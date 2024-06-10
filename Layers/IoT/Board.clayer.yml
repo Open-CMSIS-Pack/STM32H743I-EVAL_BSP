@@ -35,15 +35,15 @@ layer:
     - pack: ARM::CMSIS-Driver_STM32@>=1.0.0-0
 
   components:
-    - component: Keil::Device:CubeMX
+    - component: Device:CubeMX
 
     - component: ARM::CMSIS:CORE
 
-    - component: Keil::CMSIS Driver:USART
-    - component: Keil::CMSIS Driver:USB Device
-    - component: Keil::CMSIS Driver:Ethernet MAC
-    - component: Keil::CMSIS Driver:Ethernet PHY:LAN8742A
-    - component: Keil::CMSIS Driver:VIO:Board&STM32H743I-EVAL
+    - component: CMSIS Driver:USART
+    - component: CMSIS Driver:USB Device
+    - component: CMSIS Driver:Ethernet MAC
+    - component: CMSIS Driver:Ethernet PHY:LAN8742A
+    - component: CMSIS Driver:VIO:Board&STM32H743I-EVAL
 
     - component: ARM::CMSIS-Compiler:CORE
     - component: ARM::CMSIS-Compiler:STDERR:Custom
