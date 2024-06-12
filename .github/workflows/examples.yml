@@ -1,0 +1,72 @@
+name: Build - Examples
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - .github/workflows/examples.yml
+      - 'CMSIS/**'
+      - 'Examples/**'
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  Build:
+    strategy:
+      fail-fast: false
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout STM32H743I-EVAL_BSP
+        uses: actions/checkout@v4
+        with:
+          path: ./stm32h743-eval_bsp
+
+      - name: Checkout STM32H7xx_DFP
+        uses: actions/checkout@v4
+        with:
+          repository: Open-CMSIS-Pack/STM32H7xx_DFP
+          path: ./stm32h7xx_dfp
+
+      - name: Checkout CMSIS-Driver_STM32
+        uses: actions/checkout@v4
+        with:
+          repository: Open-CMSIS-Pack/CMSIS-Driver_STM32
+          path: ./cmsis-driver_stm32
+
+      - name: Prepare vcpkg env
+        uses: ARM-software/cmsis-actions/vcpkg@main
+        with:
+          config: ./stm32h743-eval_bsp/Examples/Blinky/vcpkg-configuration.json
+
+      - name: Initialize CMSIS pack root folder
+        run: |
+          cpackget init https://www.keil.com/pack/index.pidx
+          cpackget update-index
+
+      - name: Add local CMSIS packs
+        working-directory:
+        run: |
+          cpackget add ./stm32h743-eval_bsp/Keil.STM32H743I-EVAL_BSP.pdsc
+          cpackget add ./stm32h7xx_dfp/Keil.STM32H7xx_DFP.pdsc
+          cpackget add ./cmsis-driver_stm32/ARM.CMSIS-Driver_STM32.pdsc
+
+      - name: Activate Arm tool license
+        run: |
+          armlm activate --server https://mdk-preview.keil.arm.com --product KEMDK-COM0
+
+      - uses: ammaraskar/gcc-problem-matcher@master
+
+      - name: Build Blinky
+        working-directory: ./stm32h743-eval_bsp/Examples/Blinky
+        run: |
+          cbuild ./Blinky.csolution.yml --packs --update-rte
+
+      - name: Deactivate Arm tool license
+        if: always()
+        run: |
+          armlm deactivate --product KEMDK-COM0
