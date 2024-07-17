@@ -78,6 +78,7 @@
              large="Images/stm32h743i-eval_large.png"/>
       <book category="overview"  name="http://www.st.com/en/evaluation-tools/stm32h743i-eval.html" title="STM32H743I_EVAL Evaluation Board Web Page"/>
       <book category="manual"    name="https://www.st.com/resource/en/data_brief/stm32h743i-eval.pdf" title="Data brief"/>
+      <book category="other"     name="Documents/README.md" title="Guide" public="true"/>
       <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32H743XIHx"/>
       <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32H743"/>
       <feature type="ODbg"      n="1"              name="On-board ST-LINK/V2"/>
