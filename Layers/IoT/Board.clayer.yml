@@ -40,7 +40,7 @@ layer:
     - component: CMSIS Driver:USB Device
     - component: CMSIS Driver:Ethernet MAC
     - component: CMSIS Driver:Ethernet PHY:LAN8742A
-    - component: CMSIS Driver:VIO:Board&STM32H743I-EVAL
+    - component: CMSIS Driver:VIO:Board
 
     - component: ARM::CMSIS-Compiler:CORE
     - component: ARM::CMSIS-Compiler:STDERR:Custom

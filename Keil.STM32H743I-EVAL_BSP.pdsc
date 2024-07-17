@@ -32,8 +32,9 @@
 
   <requirements>
     <packages>
-      <package vendor="Keil" name="STM32H7xx_DFP" version="4.0.0-0"/>
-      <package vendor="ARM"  name="CMSIS"         version="6.0.0-0"/>
+      <package vendor="Keil" name="STM32H7xx_DFP"      version="4.0.0-0"/>
+      <package vendor="ARM"  name="CMSIS"              version="6.0.0-0"/>
+      <package vendor="ARM"  name="CMSIS-Driver_STM32" version="1.0.0-0"/>
     </packages>
   </requirements>
 
@@ -44,18 +45,18 @@
       <require Bvendor="STMicroelectronics" Bname="STM32H743I-EVAL"/>
     </condition>
 
-    <!-- Board + CubeMX Condition -->
-    <condition id="STM32H743I-EVAL CubeMX">
-      <description>STM32H743I-EVAL Board and CubeMX</description>
+    <!-- Board Condition + CMSIS Driver GPIO-->
+    <condition id="STM32H743I-EVAL GPIO">
+      <description>STMicroelectronics STM32H743I-EVAL Board with CMSIS Driver GPIO</description>
       <require condition="STM32H743I-EVAL"/>
-      <require Cclass="Device" Cgroup="CubeMX"/>
+      <require Cclass="CMSIS Driver" Cgroup="GPIO"/>
     </condition>
   </conditions>
 
   <components>
     <!-- CMSIS VIO Driver component for STM32H743I-EVAL -->
-    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant= "STM32H743I-EVAL" Cversion="1.0.0" Capiversion="1.0.0" condition="STM32H743I-EVAL CubeMX">
-      <description>Virtual I/O implementation for STM32H743I-EVAL</description>
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cversion="1.0.1" Capiversion="1.0.0" condition="STM32H743I-EVAL GPIO">
+      <description>I/O implementation for STM32H743I-EVAL</description>
       <RTE_Components_h>
         #define RTE_VIO_BOARD
         #define RTE_VIO_STM32H743I_EVAL
@@ -66,7 +67,7 @@
     </component>
   </components>
 
-  <csolution> 
+  <csolution>
     <clayer type="Board" path="Layers/IoT" file="Board.clayer.yml" copy-to="Board/STM32H743I-EVAL" condition="STM32H743I-EVAL"/>
   </csolution>
 

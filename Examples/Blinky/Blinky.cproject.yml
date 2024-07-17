@@ -15,8 +15,9 @@ project:
     - component: ARM::CMSIS-Compiler:STDOUT:Custom
     - component: ARM::CMSIS-Compiler:STDERR:Custom
 
+    - component: CMSIS Driver:GPIO
     - component: CMSIS Driver:USART
-    - component: CMSIS Driver:VIO:Board&STM32H743I-EVAL
+    - component: CMSIS Driver:VIO
 
   # List of source groups and files added to a project or a layer.
   groups:
