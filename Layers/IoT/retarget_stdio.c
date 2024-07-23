@@ -21,11 +21,10 @@
  *
  *---------------------------------------------------------------------------*/
 
-#include "Driver_USART.h"
+#include CMSIS_target_header
 
 // Compile-time configuration
-#define USART_DRV_NUM           1
-#define USART_BAUDRATE          115200
+#define UART_BAUDRATE     115200
 
 // Exported functions
 extern int stdio_init     (void);
@@ -33,8 +32,7 @@ extern int stderr_putchar (int ch);
 extern int stdout_putchar (int ch);
 extern int stdin_getchar  (void);
 
-extern ARM_DRIVER_USART     ARM_Driver_USART_(USART_DRV_NUM);
-#define ptrUSART          (&ARM_Driver_USART_(USART_DRV_NUM))
+#define ptrUSART          (&ARM_Driver_USART_(RETARGET_STDIO_UART))
 
 /**
   Initialize stdio
@@ -56,7 +54,7 @@ int stdio_init (void) {
                         ARM_USART_PARITY_NONE       |
                         ARM_USART_STOP_BITS_1       |
                         ARM_USART_FLOW_CONTROL_NONE,
-                        USART_BAUDRATE) != ARM_DRIVER_OK) {
+                        UART_BAUDRATE) != ARM_DRIVER_OK) {
     return -1;
   }
 

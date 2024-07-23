@@ -13,7 +13,9 @@ layer:
     - connect: STM32H743I-EVAL Board
       provides:
         - CMSIS_ETH
+        - CMSIS_MCI
         - CMSIS_USB_Device
+        - CMSIS_USB_Host
         - CMSIS_VIO
         - STDIN
         - STDOUT
@@ -27,25 +29,33 @@ layer:
     - pack: Keil::STM32H7xx_DFP@>=4.0.0-0
     - pack: Keil::STM32H743I-EVAL_BSP@>=1.0.0-0
     - pack: ARM::CMSIS@>=6.0.0-0
-    - pack: ARM::CMSIS-Driver@>=2.8.0-0
     - pack: ARM::CMSIS-Compiler@>=2.0.0-0
+    - pack: ARM::CMSIS-Driver@>=2.8.0-0
     - pack: ARM::CMSIS-Driver_STM32@>=1.0.0-0
+
+  misc:
+    - for-compiler: AC6
+      Link:
+        - '--diag_suppress 6329'
 
   components:
     - component: Device:CubeMX
 
-    - component: ARM::CMSIS:CORE
+    - component: CMSIS:CORE
 
-    - component: CMSIS Driver:USART
-    - component: CMSIS Driver:USB Device
     - component: CMSIS Driver:Ethernet MAC
     - component: CMSIS Driver:Ethernet PHY:LAN8742A
+    - component: CMSIS Driver:GPIO
+    - component: CMSIS Driver:MCI
+    - component: CMSIS Driver:USART
+    - component: CMSIS Driver:USB Device
+    - component: CMSIS Driver:USB Host
     - component: CMSIS Driver:VIO:Board
 
-    - component: ARM::CMSIS-Compiler:CORE
-    - component: ARM::CMSIS-Compiler:STDERR:Custom
-    - component: ARM::CMSIS-Compiler:STDOUT:Custom
-    - component: ARM::CMSIS-Compiler:STDIN:Custom
+    - component: CMSIS-Compiler:CORE
+    - component: CMSIS-Compiler:STDERR:Custom
+    - component: CMSIS-Compiler:STDOUT:Custom
+    - component: CMSIS-Compiler:STDIN:Custom
 
   groups:
     - group: Board

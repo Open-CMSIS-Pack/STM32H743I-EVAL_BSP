@@ -20,9 +20,30 @@
 #ifndef STM32H743I_EVAL_H_
 #define STM32H743I_EVAL_H_
 
+#include "GPIO_STM32.h"
+#include "Driver_ETH_MAC.h"
+#include "Driver_ETH_PHY.h"
+#include "Driver_MCI.h"
+#include "Driver_USART.h"
+#include "Driver_USBD.h"
+#include "Driver_USBH.h"
+
 // CMSIS Driver instances of Board peripherals
-#define CMSIS_DRIVER_USBD   0   // instance of CMSIS-Driver USB Device
-#define CMSIS_DRIVER_ETH    0   // instance of CMSIS-Driver ETH
+#define CMSIS_DRIVER_ETH   0 // CMSIS-Driver ETH instance number
+#define CMSIS_DRIVER_MCI   1 // CMSIS-Driver MCI instance number
+#define CMSIS_DRIVER_USBD  0 // CMSIS-Driver USB Device instance number
+#define CMSIS_DRIVER_USBH  1 // CMSIS-Driver USB Host instance number
+
+// Retarget stdio to CMSIS UART
+#define RETARGET_STDIO_UART 1
+
+// CMSIS Drivers
+extern ARM_DRIVER_ETH_MAC ARM_Driver_ETH_MAC_(CMSIS_DRIVER_ETH);  // ETH MAC
+extern ARM_DRIVER_ETH_PHY ARM_Driver_ETH_PHY_(CMSIS_DRIVER_ETH);  // ETH PHY
+extern ARM_DRIVER_MCI     ARM_Driver_MCI_(CMSIS_DRIVER_MCI);      // MCI
+extern ARM_DRIVER_USART   ARM_Driver_USART_(RETARGET_STDIO_UART); // ST-Link
+extern ARM_DRIVER_USBD    ARM_Driver_USBD_(CMSIS_DRIVER_USBD);    // USB Device
+extern ARM_DRIVER_USBH    ARM_Driver_USBH_(CMSIS_DRIVER_USBH);    // USB Host
 
 #ifdef CMSIS_shield_header
 #include CMSIS_shield_header
