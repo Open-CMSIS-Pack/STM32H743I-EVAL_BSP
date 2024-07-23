@@ -54,7 +54,7 @@ PACK_BASE_FILES="
 # Default: empty
 #
 # PACK_PATCH_FILES="
-#     <list patches here>
+#   <list patches here>
 # "
 
 # Specify addition argument to packchk
