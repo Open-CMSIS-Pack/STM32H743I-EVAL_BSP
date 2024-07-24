@@ -1,7 +1,4 @@
 default:
-
-  compiler: AC6
-
   misc:
     - for-compiler: AC6
       C-CPP:
@@ -52,7 +49,7 @@ default:
         - -Wl,--gc-sections
 
     - for-compiler: IAR
-      C-CPP: 
+      C-CPP:
         - -e
         - --dlib_config DLib_Config_Full.h
       Link:

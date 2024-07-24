@@ -6,18 +6,19 @@ project:
   components:
     - component: Device:CubeMX
 
-    - component: ARM::CMSIS:CORE
+    - component: CMSIS:CORE
 
-    - component: ARM::CMSIS:OS Tick:SysTick
-    - component: ARM::CMSIS:RTOS2:Keil RTX5&Source
-    - component: ARM::CMSIS-Compiler:CORE
-    - component: ARM::CMSIS-Compiler:STDIN:Custom
-    - component: ARM::CMSIS-Compiler:STDOUT:Custom
-    - component: ARM::CMSIS-Compiler:STDERR:Custom
+    - component: CMSIS:OS Tick:SysTick
+    - component: CMSIS:RTOS2:Keil RTX5&Source
+
+    - component: CMSIS-Compiler:CORE
+    - component: CMSIS-Compiler:STDIN:Custom
+    - component: CMSIS-Compiler:STDOUT:Custom
+    - component: CMSIS-Compiler:STDERR:Custom
 
     - component: CMSIS Driver:GPIO
     - component: CMSIS Driver:USART
-    - component: CMSIS Driver:VIO
+    - component: CMSIS Driver:VIO:Board
 
   # List of source groups and files added to a project or a layer.
   groups:

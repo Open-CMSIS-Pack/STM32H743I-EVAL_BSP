@@ -1,3 +1,4 @@
+
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
@@ -70,10 +71,6 @@ void HAL_MspInit(void)
   __HAL_RCC_SYSCFG_CLK_ENABLE();
 
   /* System interrupt init*/
-  /* SVCall_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(SVCall_IRQn, 14, 0);
-  /* PendSV_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(PendSV_IRQn, 15, 0);
 
   /* USER CODE BEGIN MspInit 1 */
 
@@ -127,6 +124,7 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
   /* USER CODE BEGIN ADC1_MspInit 1 */
 
   /* USER CODE END ADC1_MspInit 1 */
+
   }
 
 }
@@ -205,6 +203,7 @@ void HAL_DFSDM_ChannelMspInit(DFSDM_Channel_HandleTypeDef* hdfsdm_channel)
   /* USER CODE BEGIN DFSDM1_MspInit 1 */
 
   /* USER CODE END DFSDM1_MspInit 1 */
+
   DFSDM1_Init++;
   }
 
@@ -297,6 +296,7 @@ void HAL_ETH_MspInit(ETH_HandleTypeDef* heth)
   /* USER CODE BEGIN ETH_MspInit 1 */
 
   /* USER CODE END ETH_MspInit 1 */
+
   }
 
 }
@@ -385,6 +385,7 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* hi2c)
   /* USER CODE BEGIN I2C1_MspInit 1 */
 
   /* USER CODE END I2C1_MspInit 1 */
+
   }
 
 }
@@ -516,6 +517,7 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* hltdc)
   /* USER CODE BEGIN LTDC_MspInit 1 */
 
   /* USER CODE END LTDC_MspInit 1 */
+
   }
 
 }
@@ -672,6 +674,7 @@ void HAL_QSPI_MspInit(QSPI_HandleTypeDef* hqspi)
   /* USER CODE BEGIN QUADSPI_MspInit 1 */
 
   /* USER CODE END QUADSPI_MspInit 1 */
+
   }
 
 }
@@ -760,11 +763,12 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
     /* USART1 interrupt Init */
-    HAL_NVIC_SetPriority(USART1_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(USART1_IRQn, 8, 0);
     HAL_NVIC_EnableIRQ(USART1_IRQn);
   /* USER CODE BEGIN USART1_MspInit 1 */
 
   /* USER CODE END USART1_MspInit 1 */
+
   }
 
 }
