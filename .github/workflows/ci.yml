@@ -18,16 +18,23 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: Open-CMSIS-Pack/STM32H743I-EVAL_BSP
+        path: ./
 
     - name: Checkout STM32H7xx_DFP
       uses: actions/checkout@v4
       with:
         repository: Open-CMSIS-Pack/STM32H7xx_DFP
+        path: ./
 
     - name: Checkout MDK-Middleware
       uses: actions/checkout@v4
       with:
         repository: ARM-software/MDK-Middleware
+        path: ./
+
+    - name: Show directory
+      run: |
+        tree
 
     - name: Cache packs
       uses: actions/cache@v4
