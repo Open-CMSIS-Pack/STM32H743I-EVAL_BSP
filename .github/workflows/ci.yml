@@ -27,7 +27,7 @@ jobs:
     - name: Checkout MDK-Middleware
       uses: actions/checkout@v4
       with:
-        repository: Open-CMSIS-Pack/MDK-Middleware
+        repository: ARM-software/MDK-Middleware
 
     - name: Cache packs
       uses: actions/cache@v4
