@@ -19,6 +19,6 @@ Operation
 
 | CMSIS-Driver VIO  | Physical resource
 |:------------------|:-------------------------------
-| vioBUTTON0        | Button USER 
-| vioLED0           | LED3 RGB (RED)
-| vioLED1           | LED1 RGB (GREEN)
+| vioBUTTON0        | Button USER (PC13)
+| vioLED0           | LED3 RED    (PA4)
+| vioLED1           | LED1 GREEN  (PF10)

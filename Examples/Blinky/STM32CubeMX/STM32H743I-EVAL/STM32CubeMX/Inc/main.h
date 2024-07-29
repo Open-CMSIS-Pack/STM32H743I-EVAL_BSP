@@ -53,9 +53,8 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-extern int stdio_init   (void);
-extern int app_main     (void);
-extern int shield_setup (void);
+extern int stdio_init (void);
+extern int app_main   (void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
