@@ -17,7 +17,8 @@ jobs:
     - name: Checkout STM32H743I-EVAL_BSP
       uses: actions/checkout@v4
       with:
-        repository: Open-CMSIS-Pack/STM32H743I-EVAL_BSP
+#       repository: Open-CMSIS-Pack/STM32H743I-EVAL_BSP
+        repository: Evagan2018/STM32H743I-EVAL_BSP        
         path: ./STM32H743I-EVAL_BSP
 
     - name: Checkout STM32H7xx_DFP
@@ -32,7 +33,7 @@ jobs:
         repository: ARM-software/MDK-Middleware
         path: ./MDK-Middleware
 
-    - name: Show directory
+    - name: Show directories
       working-directory: ./
       run: |
         tree -d -L 1
