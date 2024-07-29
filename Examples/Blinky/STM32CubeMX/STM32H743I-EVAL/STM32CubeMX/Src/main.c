@@ -154,11 +154,11 @@ int main(void)
   MX_USB_OTG_HS_PCD_Init();
   /* USER CODE BEGIN 2 */
 
-  stdio_init();                                 /* Initialize STDIO */
+  stdio_init();                         /* Initialize STDIO */
 
-  vioInit();                                    /* Initialize Virtual I/O */
+  vioInit();                            /* Initialize Virtual I/O */
 
-  app_main();                                   /* Execute Application main */
+  app_main();                           /* Execute Application main */
 
   /* USER CODE END 2 */
 

@@ -29,10 +29,10 @@
 #include "Driver_USBH.h"
 
 // CMSIS Driver instances of Board peripherals
-#define CMSIS_DRIVER_ETH   0 // CMSIS-Driver ETH instance number
-#define CMSIS_DRIVER_MCI   1 // CMSIS-Driver MCI instance number
-#define CMSIS_DRIVER_USBD  0 // CMSIS-Driver USB Device instance number
-#define CMSIS_DRIVER_USBH  1 // CMSIS-Driver USB Host instance number
+#define CMSIS_DRIVER_ETH    0   // CMSIS-Driver ETH instance number
+#define CMSIS_DRIVER_MCI    1   // CMSIS-Driver MCI instance number
+#define CMSIS_DRIVER_USBD   0   // CMSIS-Driver USB Device instance number
+#define CMSIS_DRIVER_USBH   1   // CMSIS-Driver USB Host instance number
 
 // Retarget stdio to CMSIS UART
 #define RETARGET_STDIO_UART 1
