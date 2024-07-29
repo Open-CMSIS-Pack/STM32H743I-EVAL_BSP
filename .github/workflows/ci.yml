@@ -17,17 +17,17 @@ jobs:
     - name: Checkout STM32H743I-EVAL_BSP
       uses: actions/checkout@v4
       with:
-        repository: STM32H743I-EVAL_BSP
+        repository: Open-CMSIS-Pack/STM32H743I-EVAL_BSP
 
     - name: Checkout STM32H7xx_DFP
       uses: actions/checkout@v4
       with:
-        repository: STM32H7xx_DFP
+        repository: Open-CMSIS-Pack/STM32H7xx_DFP
 
     - name: Checkout MDK-Middleware
       uses: actions/checkout@v4
       with:
-        repository: MDK-Middleware
+        repository: Open-CMSIS-Pack/MDK-Middleware
 
     - name: Cache packs
       uses: actions/cache@v4
