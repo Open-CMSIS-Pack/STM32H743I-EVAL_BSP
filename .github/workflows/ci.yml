@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v4
       with:
 #       repository: Open-CMSIS-Pack/STM32H743I-EVAL_BSP
-        repository: Evagan2018/STM32H743I-EVAL_BSP        
+#        repository: Evagan2018/STM32H743I-EVAL_BSP        
         path: ./STM32H743I-EVAL_BSP
 
     - name: Checkout STM32H7xx_DFP
@@ -36,7 +36,7 @@ jobs:
     - name: Show directories
       working-directory: ./
       run: |
-        tree -d -L 1
+        tree -d -L 3
 
     - name: Cache packs
       uses: actions/cache@v4
