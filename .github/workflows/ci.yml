@@ -16,6 +16,8 @@ jobs:
     steps:
     - name: Checkout STM32H743I-EVAL_BSP
       uses: actions/checkout@v4
+      with:
+        path: ./STM32H743I-EVAL_BSP
 
     - name: Checkout STM32H7xx_DFP
       uses: actions/checkout@v4
