@@ -100,7 +100,16 @@ jobs:
     - name: Copy IoT folder to MW directories
       working-directory: ./
       run: |
+          mkdir -p CI/Examples/FileSystem/Board
+          mkdir -p CI/Examples/Network/Board
+          mkdir -p CI/Examples/USB/Device/Board
+          mkdir -p CI/Examples/USB/Host/Board
           cp -rf ./BSP/Layers/IoT/* ./CI/Examples/FileSystem/Board/
           cp -rf ./BSP/Layers/IoT/* ./CI/Examples/Network/Board/
           cp -rf ./BSP/Layers/IoT/* ./CI/Examples/USB/Device/Board/
           cp -rf ./BSP/Layers/IoT/* ./CI/Examples/USB/Host/Board/
+
+    - name: Show directories
+      working-directory: ./CI/Examples/
+      run: |
+          tree -d -L 5    
