@@ -109,7 +109,16 @@ jobs:
           cp -rf ./BSP/Layers/IoT/* ./CI/Examples/USB/Device/Board/
           cp -rf ./BSP/Layers/IoT/* ./CI/Examples/USB/Host/Board/
 
+    - name: Copy *-CI.csolution.yml files
+      working-directory: ./
+      run: |
+          cp ./.ci/FileSystem-CI.csolution.yml ./CI/Examples/FileSystem/
+          cp ./.ci/Network-CI.csolution.yml ./CI/Examples/Network/
+          cp ./.ci/USB_Device-CI.csolution.yml ./CI/Examples/USB/Device/
+          cp ./.ci/USB_Host-CI.csolution.yml ./CI/Examples/USB/Host/
+
     - name: Show directories
       working-directory: ./CI/Examples/
       run: |
-          tree -d -L 5    
+          tree -d -L 5
+
