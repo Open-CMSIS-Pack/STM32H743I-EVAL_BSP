@@ -128,5 +128,5 @@ jobs:
       working-directory: ./
       run: |
            cbuild ./CI/Examples/FileSystem/FileSystem-CI.csolution.yml --update-rte --packs \
-           --context ./CI/Examples/FileSystem/FileSystem-CI.csolution.Release+STM32H743I-EVAL \
+           --context ./CI/Examples/FileSystem/FileSystem-CI.Release+STM32H743I-EVAL \
            --toolchain AC6 --rebuild
