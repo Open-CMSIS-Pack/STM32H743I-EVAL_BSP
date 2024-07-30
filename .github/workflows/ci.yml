@@ -83,12 +83,12 @@ jobs:
         tree -d -L 5
  
     - name: Copy BSP examples to CI directory
-      working-directory: ./    
+      working-directory: ./
       run: |
         cp -rf ./BSP/Examples/* ./CI/Examples/
 
     - name: Copy Middleware examples to CI directory
-      working-directory: ./    
+      working-directory: ./
       run: |
           cp -rf ./MW/Examples/* ./CI/Examples/
 
@@ -96,3 +96,11 @@ jobs:
       working-directory: ./../
       run: |
           tree -d -L 5
+
+    - name: Copy IoT folder to MW directories
+      working-directory: ./
+      run: |
+          cp -rf ./BSP/Layers/IoT/* ./CI/Examples/FileSystem/Board/
+          cp -rf ./BSP/Layers/IoT/* ./CI/Examples/Network/Board/
+          cp -rf ./BSP/Layers/IoT/* ./CI/Examples/USB/Device/Board/
+          cp -rf ./BSP/Layers/IoT/* ./CI/Examples/USB/Host/Board/
