@@ -39,18 +39,18 @@ solution:
     - project: ./HID/HID.cproject.yml
       for-context:
         - +STM32H743I-EVAL
-#         - +STM32F746G-DISCO
-#         - +STM32F769I-DISCO
-#         - +STM32F769I-EVAL       
+#       - +STM32F746G-DISCO
+#       - +STM32F769I-DISCO
+#       - +STM32F769I-EVAL       
     - project: ./MassStorage/MassStorage.cproject.yml
       for-context:
         - +STM32H743I-EVAL
-#         - +STM32F746G-DISCO
-#         - +STM32F769I-DISCO
-#         - +STM32F769I-EVAL          
+#       - +STM32F746G-DISCO
+#       - +STM32F769I-DISCO
+#       - +STM32F769I-EVAL          
     - project: ./VirtualCOM/VirtualCOM.cproject.yml
       for-context:
         - +STM32H743I-EVAL
-#         - +STM32F746G-DISCO
-#         - +STM32F769I-DISCO
-#         - +STM32F769I-EVAL 
+#       - +STM32F746G-DISCO
+#       - +STM32F769I-DISCO
+#       - +STM32F769I-EVAL 

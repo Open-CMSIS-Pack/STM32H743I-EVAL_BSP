@@ -34,9 +34,9 @@ solution:
       optimize: balanced
 
   projects:
- - project: ./File_Demo/File_Demo.cproject.yml
-        for-context:
-          - +STM32H743I-EVAL
-#          - +STM32F746G-DISCO
-#          - +STM32F769I-DISCO
-#          - +STM32F769I-EVAL
+    - project: ./File_Demo/File_Demo.cproject.yml
+      for-context:
+        - +STM32H743I-EVAL
+#       - +STM32F746G-DISCO
+#       - +STM32F769I-DISCO
+#       - +STM32F769I-EVAL
