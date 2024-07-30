@@ -20,6 +20,7 @@ jobs:
         sparse-checkout: |
           .github
           .gitignore
+          .ci
           vcpkg-configuration.json
 
     - name: Checkout STM32H743I-EVAL_BSP
