@@ -85,12 +85,12 @@ jobs:
     - name: Copy BSP examples to CI directory
       working-directory: ./    
       run: |
-        cp -a ./BSP/Examples/. /CI/Examples/
+        cp -rf ./BSP/Examples/* /CI/Examples/
 
     - name: Copy Middleware examples to CI directory
       working-directory: ./    
       run: |
-          cp -a ./MW/Examples/. /CI/Examples/
+          cp -rf ./MW/Examples/* /CI/Examples/
 
     - name: Show directories
       working-directory: ./../
