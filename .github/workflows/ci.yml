@@ -56,3 +56,18 @@ jobs:
 
     - name: Activate Arm tool license
       uses: ARM-software/cmsis-actions/armlm@v1
+
+    - name: Initialize CMSIS pack root folder
+      run: |
+        cpackget init https://www.keil.com/pack/index.pidx
+        cpackget update index
+
+    - name: Add local CMSIS packs
+      run: |
+        cpackget add ./STM32H743I-EVAL_BSP/Keil.STM32H743I-EVAL_BSP.pdsc
+        cpackget add ./STM32H7xx_DFP/Keil.STM32H7xx_DFP.pdsc
+        cpackget add ./MDK-Middleware/Keil.MDK-Middleware.pdsc
+
+    - name: List packs
+      run: |
+        cpackget list
