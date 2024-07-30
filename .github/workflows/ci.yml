@@ -122,10 +122,11 @@ jobs:
       working-directory: ./CI/Examples/
       run: |
           tree -d -L 5
+          ls ./FileSystem/*.yml
 
     - name: Initial build test
       working-directory: ./
       run: |
-           cbuild ./CI/Examples/FileSystem-CI.csolution.yml --update-rte --packs \
+           cbuild ./CI/Examples/FileSystem/FileSystem-CI.csolution.yml --update-rte --packs \
            --context ./CI/Examples/FileSystem-CI.csolution.Release+STM32H743I-EVAL \
            --toolchain AC6 --rebuild
