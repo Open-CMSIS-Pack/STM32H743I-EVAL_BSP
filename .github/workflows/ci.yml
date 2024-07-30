@@ -73,15 +73,21 @@ jobs:
         cpackget list
 
     - name: Create CI/Examples directory
+      working-directory: ./
       run: |
-        mkdir -p CI/Examples   <--- Take it from BSP
+        mkdir -p CI/Examples
+
+    - name: Copy BSP examples to CI directory
+      working-directory: ./    
+      run: |
+        cp -a ./BSP/Examples/. /CI/Examples/
 
     - name: Copy Middleware examples to CI directory
+      working-directory: ./    
       run: |
-        cp -a ./MW/Examples/. /CI/Examples/
+          cp -a ./MW/Examples/. /CI/Examples/
 
     - name: Show directories
       working-directory: ./../
       run: |
           tree -d -L 5
-
