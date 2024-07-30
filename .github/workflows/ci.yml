@@ -60,7 +60,7 @@ jobs:
     - name: Initialize CMSIS pack root folder
       run: |
         cpackget init https://www.keil.com/pack/index.pidx
-        cpackget update index
+        cpackget update-index
 
     - name: Add local CMSIS packs
       run: |
