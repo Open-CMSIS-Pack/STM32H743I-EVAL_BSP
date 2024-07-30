@@ -14,6 +14,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout STM32H743I-EVAL_BSP root
+      uses: actions/checkout@v4
+      with:
+        sparse-checkout: |
+          .github
+          .gitignore
+          vcpkg-configuration.json
+
     - name: Checkout STM32H743I-EVAL_BSP
       uses: actions/checkout@v4
       with:
