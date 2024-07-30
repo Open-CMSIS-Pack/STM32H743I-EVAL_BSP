@@ -77,6 +77,11 @@ jobs:
       run: |
         mkdir -p CI/Examples
 
+    - name: Show directories
+      working-directory: ./../
+      run: |
+        tree -d -L 5
+ 
     - name: Copy BSP examples to CI directory
       working-directory: ./    
       run: |
