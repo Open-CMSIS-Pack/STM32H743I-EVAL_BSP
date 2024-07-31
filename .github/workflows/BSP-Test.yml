@@ -18,11 +18,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         sparse-checkout: |
-          .github
-          .gitignore
           .ci
-          vcpkg-configuration.json
-          CI
 
     - name: Checkout STM32H743I-EVAL_BSP
       uses: actions/checkout@v4
@@ -48,11 +44,6 @@ jobs:
         repository: Open-CMSIS-Pack/CMSIS-Driver_STM32
         path: ./CMSIS-Driver_STM32
 
-    - name: Show directories after the initial checkout
-      working-directory: ./../
-      run: |
-        tree -d -L 7
-
     - name: Install tools
       uses: ARM-software/cmsis-actions/vcpkg@v1
 
@@ -70,33 +61,23 @@ jobs:
         cpackget add ./DFP/Keil.STM32H7xx_DFP.pdsc
         cpackget add ./MW/Keil.MDK-Middleware.pdsc
         cpackget add ./CMSIS-Driver_STM32/ARM.CMSIS-Driver_STM32.pdsc
-        cpackget list        
-        csolution list environment --verbose
 
-    - name: Show local_repository.pidx content
-      run: |
-        cat /home/runner/.cache/arm/packs/.Local/local_repository.pidx
-
-    - name: List packs
-      run: |
-        cpackget list
-
-    - name: Show directories
+    - name: Show directories [1]
       working-directory: ./../
       run: |
         tree -d -L 5
  
-    - name: Copy BSP examples to CI directory
+    - name: Copy BSP examples to .ci directory
       working-directory: ./
       run: |
-        cp -rf ./BSP/Examples/* ./CI/Examples/
+        cp -rf ./BSP/Examples/* ./.ci/Examples/
 
-    - name: Copy Middleware examples to CI directory
+    - name: Copy Middleware examples to .ci directory
       working-directory: ./
       run: |
-          cp -rf ./MW/Examples/* ./CI/Examples/
+          cp -rf ./MW/Examples/* ./.ci/Examples/
 
-    - name: Show directories
+    - name: Show directories [2]
       working-directory: ./../
       run: |
           tree -d -L 5
@@ -104,33 +85,38 @@ jobs:
     - name: Copy board layer
       working-directory: ./
       run: |
-          cp -rf ./BSP/Layers/IoT/* ./CI/Examples/FileSystem/Board/
-          cp -rf ./BSP/Layers/IoT/* ./CI/Examples/Network/Board/
-          cp -rf ./BSP/Layers/IoT/* ./CI/Examples/USB/Device/Board/
-          cp -rf ./BSP/Layers/IoT/* ./CI/Examples/USB/Host/Board/
+          cp -rf ./BSP/Layers/IoT/* ./.ci/Examples/FileSystem/Board/
+          cp -rf ./BSP/Layers/IoT/* ./.ci/Examples/Network/Board/
+          cp -rf ./BSP/Layers/IoT/* ./.ci/Examples/USB/Device/Board/
+          cp -rf ./BSP/Layers/IoT/* ./.ci/Examples/USB/Host/Board/
 
-    - name: Copy *-CI.csolution.yml files
-      working-directory: ./
-      run: |
-          cp ./.ci/FileSystem-CI.csolution.yml ./CI/Examples/FileSystem/
-          cp ./.ci/Network-CI.csolution.yml ./CI/Examples/Network/
-          cp ./.ci/USB_Device-CI.csolution.yml ./CI/Examples/USB/Device/
-          cp ./.ci/USB_Host-CI.csolution.yml ./CI/Examples/USB/Host/
-
-    - name: Show directories
+    - name: Show directories [3]
       working-directory: ./CI/Examples/
       run: |
           tree -d -L 5
           ls ./FileSystem/*.yml
 
-    - name: FileSystem initial build test
+    - name: FileSystem build test
       working-directory: ./CI/Examples/FileSystem/
       run: |
           cbuild ./FileSystem-CI.csolution.yml --update-rte --packs \
           --toolchain AC6 --rebuild
 
-    - name: Network initial build test
+    - name: Network build test
       working-directory: ./CI/Examples/Network/
       run: |
           cbuild ./Network-CI.csolution.yml --update-rte --packs \
           --toolchain AC6 --rebuild
+
+    - name: USB Device build test
+      working-directory: ./CI/Examples/USB/Device/
+      run: |
+          cbuild ./USB_Device-CI.csolution.yml --update-rte --packs \
+          --toolchain AC6 --rebuild
+
+    - name: USB Host build test
+      working-directory: ./CI/Examples/USB/Host/
+      run: |
+              cbuild ./USB_Host-CI.csolution.yml --update-rte --packs \
+              --toolchain AC6 --rebuild
+    
