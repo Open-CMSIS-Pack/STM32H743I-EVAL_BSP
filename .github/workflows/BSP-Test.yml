@@ -10,8 +10,22 @@ on:
     - cron: '00 20 * * 6'
 
 jobs:
-  install_build_execute:
+  install_build:
     runs-on: ubuntu-latest
+
+
+    strategy:
+      matrix:
+        compiler: [ 
+          {name: AC6},
+          {name: GCC}
+        ]
+        component: [ 
+          {name: FileSystem,   exmpdir: FileSystem,   csol: FileSystem-CI.csolution.yml},
+          {name: Network,      exmpdir: Network,      csol: Network-CI.csolution.yml}, 
+          {name: USB_Device,   exmpdir: USB/Device,   csol: USB_Device-CI.csolution.yml},
+          {name: USB_Host,     exmpdir: USB/Host,     csol: USB_Host-CI.csolution.yml}
+        ]
 
     steps:
     - name: Checkout STM32H743I-EVAL_BSP root
@@ -87,19 +101,15 @@ jobs:
     - name: Copy board layer
       working-directory: ./
       run: |
-          cp -rf ./BSP/Layers/IoT/* ./.ci/Examples/FileSystem/Board/
-          cp -rf ./BSP/Layers/IoT/* ./.ci/Examples/Network/Board/
-          cp -rf ./BSP/Layers/IoT/* ./.ci/Examples/USB/Device/Board/
-          cp -rf ./BSP/Layers/IoT/* ./.ci/Examples/USB/Host/Board/
+          cp -rf ./BSP/Layers/IoT/* ./.ci/Examples/${{ matrix.component.exmpdir }}/Board/
 
     - name: Show directories [3]
       working-directory: ./.ci/Examples/
       run: |
           tree -d -L 5
-          ls ./FileSystem/*.yml
 
-    - name: FileSystem build test
-      working-directory: ./.ci/Examples/FileSystem/
+    - name: ${{ matrix.component.name }} build test
+      working-directory: ./.ci/Examples/${{ matrix.component.exmpdir }}/
       run: |
-          cbuild ./FileSystem-CI.csolution.yml --update-rte --packs \
-          --toolchain AC6 --rebuild
+          cbuild ./${{ matrix.component.csol }} --update-rte --packs \
+          --toolchain ${{ matrix.compiler.name }} --rebuild
