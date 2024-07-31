@@ -98,7 +98,7 @@ jobs:
       run: |
           tree -d -L 5
 
-    - name: Copy IoT folder to MW directories
+    - name: Copy board layer
       working-directory: ./
       run: |
           mkdir -p CI/Examples/FileSystem/Board
@@ -128,5 +128,6 @@ jobs:
     - name: Initial build test
       working-directory: ./CI/Examples/FileSystem/
       run: |
+          cpackget update-index
           cbuild ./FileSystem-CI.csolution.yml --update-rte --packs \
           --toolchain AC6 --rebuild
