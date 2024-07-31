@@ -86,12 +86,12 @@ jobs:
     - name: Copy BSP examples to CI directory
       working-directory: ./
       run: |
-        cp -rf ./BSP/Examples/* ./CI/Examples/
+        cp -rf ./STM32H743I-EVAL_BSP/Examples/* ./CI/Examples/
 
     - name: Copy Middleware examples to CI directory
       working-directory: ./
       run: |
-          cp -rf ./MW/Examples/* ./CI/Examples/
+          cp -rf ./MDK-Middleware/Examples/* ./CI/Examples/
 
     - name: Show directories
       working-directory: ./../
@@ -105,10 +105,10 @@ jobs:
           mkdir -p CI/Examples/Network/Board
           mkdir -p CI/Examples/USB/Device/Board
           mkdir -p CI/Examples/USB/Host/Board
-          cp -rf ./BSP/Layers/IoT/* ./CI/Examples/FileSystem/Board/
-          cp -rf ./BSP/Layers/IoT/* ./CI/Examples/Network/Board/
-          cp -rf ./BSP/Layers/IoT/* ./CI/Examples/USB/Device/Board/
-          cp -rf ./BSP/Layers/IoT/* ./CI/Examples/USB/Host/Board/
+          cp -rf ./STM32H743I-EVAL_BSP/Layers/IoT/* ./CI/Examples/FileSystem/Board/
+          cp -rf ./STM32H743I-EVAL_BSP/Layers/IoT/* ./CI/Examples/Network/Board/
+          cp -rf ./STM32H743I-EVAL_BSP/Layers/IoT/* ./CI/Examples/USB/Device/Board/
+          cp -rf ./STM32H743I-EVAL_BSP/Layers/IoT/* ./CI/Examples/USB/Host/Board/
 
     - name: Copy *-CI.csolution.yml files
       working-directory: ./
