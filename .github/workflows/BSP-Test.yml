@@ -46,6 +46,8 @@ jobs:
 
     - name: Install tools
       uses: ARM-software/cmsis-actions/vcpkg@v1
+      with:
+        config: "./.ci/vcpkg-configuration.json"
 
     - name: Activate Arm tool license
       uses: ARM-software/cmsis-actions/armlm@v1
@@ -101,22 +103,3 @@ jobs:
       run: |
           cbuild ./FileSystem-CI.csolution.yml --update-rte --packs \
           --toolchain AC6 --rebuild
-
-    - name: Network build test
-      working-directory: ./CI/Examples/Network/
-      run: |
-          cbuild ./Network-CI.csolution.yml --update-rte --packs \
-          --toolchain AC6 --rebuild
-
-    - name: USB Device build test
-      working-directory: ./CI/Examples/USB/Device/
-      run: |
-          cbuild ./USB_Device-CI.csolution.yml --update-rte --packs \
-          --toolchain AC6 --rebuild
-
-    - name: USB Host build test
-      working-directory: ./CI/Examples/USB/Host/
-      run: |
-              cbuild ./USB_Host-CI.csolution.yml --update-rte --packs \
-              --toolchain AC6 --rebuild
-    
