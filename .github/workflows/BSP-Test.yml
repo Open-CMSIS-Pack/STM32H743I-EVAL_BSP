@@ -73,9 +73,8 @@ jobs:
         csolution list environment --verbose
         find /home/runner/ -name '*.pidx'
 
-    - name: Show *.pidx content
+    - name: Show local_repository.pidx content
       run: |
-        cat /home/runner/.cache/arm/packs/.Web/index.pidx      
         cat /home/runner/.cache/arm/packs/.Local/local_repository.pidx
 
     - name: List packs
