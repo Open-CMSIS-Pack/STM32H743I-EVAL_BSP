@@ -4,7 +4,7 @@ solution:
 
 # select-compiler:  # list of tested compilers that can be selected
 #   - compiler: AC6
-  compiler: AC6
+#  compiler: AC6
 
   target-types:
     - type: STM32H743I-EVAL
