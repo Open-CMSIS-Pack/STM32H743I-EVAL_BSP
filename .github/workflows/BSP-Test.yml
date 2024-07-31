@@ -18,11 +18,11 @@ jobs:
         compiler: [ 
           {name: AC6}
         ]
-        component: [ 
-          {name: FileSystem,   exmpdir: FileSystem,   csol: FileSystem-CI.csolution.yml},
-          {name: Network,      exmpdir: Network,      csol: Network-CI.csolution.yml}, 
-          {name: USB_Device,   exmpdir: USB/Device,   csol: USB_Device-CI.csolution.yml},
-          {name: USB_Host,     exmpdir: USB/Host,     csol: USB_Host-CI.csolution.yml}
+        solution: [ 
+          {name: FileSystem,   dir: FileSystem },
+          {name: Network,      dir: Network    },
+          {name: USB_Device,   dir: USB/Device },
+          {name: USB_Host,     dir: USB/Host   }
         ]
 
     steps:
@@ -99,15 +99,15 @@ jobs:
     - name: Copy board layer
       working-directory: ./
       run: |
-          cp -rf ./BSP/Layers/IoT/* ./.ci/Examples/${{ matrix.component.exmpdir }}/Board/
+          cp -rf ./BSP/Layers/IoT/* ./.ci/Examples/${{ matrix.solution.dir }}/Board/
 
     - name: Show directories [3]
       working-directory: ./.ci/Examples/
       run: |
           tree -d -L 5
 
-    - name: ${{ matrix.component.name }} build test
-      working-directory: ./.ci/Examples/${{ matrix.component.exmpdir }}/
+    - name: ${{ matrix.solution.name }} build test
+      working-directory: ./.ci/Examples/${{ matrix.solution.dir }}/
       run: |
-          cbuild ./${{ matrix.component.csol }} --update-rte --packs \
+          cbuild ./${{ matrix.solution.name }}-CI.csolution.yml --update-rte --packs \
           --toolchain ${{ matrix.compiler.name }} --rebuild
