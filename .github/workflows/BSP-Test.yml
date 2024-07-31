@@ -41,16 +41,16 @@ jobs:
         repository: ARM-software/MDK-Middleware
         path: ./MW
 
+    - name: CMSIS-Driver_STM32
+      uses: actions/checkout@v4
+      with:
+        repository: Open-CMSIS-Pack/CMSIS-Driver_STM32
+        path: ./CMSIS-Driver_STM32
+
     - name: Show directories after the initial checkout
       working-directory: ./../
       run: |
         tree -d -L 7
-
-    - name: Cache packs
-      uses: actions/cache@v4
-      with:
-        key: cmsis-packs
-        path: /home/runner/.cache/arm/packs
 
     - name: Install tools
       uses: ARM-software/cmsis-actions/vcpkg@v1
@@ -68,9 +68,11 @@ jobs:
         cpackget add ./BSP/Keil.STM32H743I-EVAL_BSP.pdsc
         cpackget add ./DFP/Keil.STM32H7xx_DFP.pdsc
         cpackget add ./MW/Keil.MDK-Middleware.pdsc
+        cpackget add ./CMSIS-Driver_STM32/ARM.CMSIS-Driver_STM32.pdsc
         cpackget list        
         csolution list environment --verbose
-
+        cat /home/runner/.cache/arm/packs/Local/local_repository.pidx
+        
     - name: List packs
       run: |
         cpackget list
