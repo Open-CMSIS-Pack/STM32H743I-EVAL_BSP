@@ -93,13 +93,13 @@ jobs:
           cp -rf ./BSP/Layers/IoT/* ./.ci/Examples/USB/Host/Board/
 
     - name: Show directories [3]
-      working-directory: ./CI/Examples/
+      working-directory: ./.ci/Examples/
       run: |
           tree -d -L 5
           ls ./FileSystem/*.yml
 
     - name: FileSystem build test
-      working-directory: ./CI/Examples/FileSystem/
+      working-directory: ./.ci/Examples/FileSystem/
       run: |
           cbuild ./FileSystem-CI.csolution.yml --update-rte --packs \
           --toolchain AC6 --rebuild
