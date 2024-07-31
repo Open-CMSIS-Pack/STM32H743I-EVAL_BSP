@@ -27,19 +27,19 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: Evagan2018/STM32H743I-EVAL_BSP
-        path: ./BSP
+        path: ./STM32H743I-EVAL_BSP
 
     - name: Checkout STM32H7xx_DFP
       uses: actions/checkout@v4
       with:
         repository: Open-CMSIS-Pack/STM32H7xx_DFP
-        path: ./DFP
+        path: ./STM32H7xx_DFP
 
     - name: Checkout MDK-Middleware
       uses: actions/checkout@v4
       with:
         repository: ARM-software/MDK-Middleware
-        path: ./MW
+        path: ./MDK-Middleware
 
     - name: Show directories after the initial checkout
       working-directory: ./../
