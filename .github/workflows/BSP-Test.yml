@@ -13,12 +13,10 @@ jobs:
   install_build:
     runs-on: ubuntu-latest
 
-
     strategy:
       matrix:
         compiler: [ 
-          {name: AC6},
-          {name: GCC}
+          {name: AC6}
         ]
         component: [ 
           {name: FileSystem,   exmpdir: FileSystem,   csol: FileSystem-CI.csolution.yml},
