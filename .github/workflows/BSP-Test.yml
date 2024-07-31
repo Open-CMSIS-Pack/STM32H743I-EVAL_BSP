@@ -71,7 +71,7 @@ jobs:
         cpackget add ./CMSIS-Driver_STM32/ARM.CMSIS-Driver_STM32.pdsc
         cpackget list        
         csolution list environment --verbose
-        cat /home/runner/.cache/arm/packs/Local/local_repository.pidx
+        find /home/runner/ -name '*.pidx'
         
     - name: List packs
       run: |
