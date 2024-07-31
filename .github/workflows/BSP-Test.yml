@@ -68,6 +68,8 @@ jobs:
         cpackget add ./BSP/Keil.STM32H743I-EVAL_BSP.pdsc
         cpackget add ./DFP/Keil.STM32H7xx_DFP.pdsc
         cpackget add ./MW/Keil.MDK-Middleware.pdsc
+        cpackget list        
+        csolution list environment --verbose
 
     - name: List packs
       run: |
