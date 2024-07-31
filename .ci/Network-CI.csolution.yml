@@ -30,70 +30,71 @@ solution:
   build-types:
     - type: Debug
       debug: on
-#      optimize: none
+#     optimize: none
       optimize: debug
+
     - type: Release
       debug: off
       optimize: balanced
 
   projects:
-     - project: ./BSD_Client/BSD_Client.cproject.yml
-       for-context:
-         - +STM32H743I-EVAL
-#         - +STM32F746G-DISCO
-#         - +STM32F769I-DISCO
-#         - +STM32F769I-EVAL
-     - project: ./BSD_Server/BSD_Server.cproject.yml
-       for-context:
+    - project: ./BSD_Client/BSD_Client.cproject.yml
+      for-context:
         - +STM32H743I-EVAL
-#         - +STM32F746G-DISCO
-#         - +STM32F769I-DISCO
-#         - +STM32F769I-EVAL
-     - project: ./FTP_Server/FTP_Server.cproject.yml
-       for-context:
+#        - +STM32F746G-DISCO
+#        - +STM32F769I-DISCO
+#        - +STM32F769I-EVAL
+    - project: ./BSD_Server/BSD_Server.cproject.yml
+      for-context:
         - +STM32H743I-EVAL
-#         - +STM32F746G-DISCO
-#         - +STM32F769I-DISCO
-#         - +STM32F769I-EVAL  
-     - project: ./HTTP_Server/HTTP_Server.cproject.yml
-       for-context:
+#       - +STM32F746G-DISCO
+#       - +STM32F769I-DISCO
+#       - +STM32F769I-EVAL
+    - project: ./FTP_Server/FTP_Server.cproject.yml
+      for-context:
         - +STM32H743I-EVAL
-#         - +STM32F746G-DISCO
-#         - +STM32F769I-DISCO
-#         - +STM32F769I-EVAL        
-     - project: ./HTTP_Upload/HTTP_Upload.cproject.yml
-       for-context:
+#       - +STM32F746G-DISCO
+#       - +STM32F769I-DISCO
+#       - +STM32F769I-EVAL  
+    - project: ./HTTP_Server/HTTP_Server.cproject.yml
+      for-context:
         - +STM32H743I-EVAL
-#         - +STM32F746G-DISCO
-#         - +STM32F769I-DISCO
-#         - +STM32F769I-EVAL
-     - project: ./HTTPS_Server/HTTPS_Server.cproject.yml
-       for-context:
+#       - +STM32F746G-DISCO
+#       - +STM32F769I-DISCO
+#       - +STM32F769I-EVAL        
+    - project: ./HTTP_Upload/HTTP_Upload.cproject.yml
+      for-context:
         - +STM32H743I-EVAL
-#         - +STM32F746G-DISCO
-#         - +STM32F769I-DISCO
-#         - +STM32F769I-EVAL       
-     - project: ./SMTP_Client/SMTP_Client.cproject.yml
-       for-context:
+#       - +STM32F746G-DISCO
+#       - +STM32F769I-DISCO
+#       - +STM32F769I-EVAL
+    - project: ./HTTPS_Server/HTTPS_Server.cproject.yml
+      for-context:
         - +STM32H743I-EVAL
-#         - +STM32F746G-DISCO
-#         - +STM32F769I-DISCO
-#         - +STM32F769I-EVAL       
-     - project: ./SMTPS_Client/SMTPS_Client.cproject.yml
-       for-context:
+#       - +STM32F746G-DISCO
+#       - +STM32F769I-DISCO
+#       - +STM32F769I-EVAL       
+    - project: ./SMTP_Client/SMTP_Client.cproject.yml
+      for-context:
         - +STM32H743I-EVAL
-#         - +STM32F746G-DISCO
-#         - +STM32F769I-DISCO
-#         - +STM32F769I-EVAL       
-     - project: ./SNMP_Agent/SNMP_Agent.cproject.yml
-       for-context:
+#       - +STM32F746G-DISCO
+#       - +STM32F769I-DISCO
+#       - +STM32F769I-EVAL       
+    - project: ./SMTPS_Client/SMTPS_Client.cproject.yml
+      for-context:
         - +STM32H743I-EVAL
-#         - +STM32F746G-DISCO
-#         - +STM32F769I-DISCO
-#         - +STM32F769I-EVAL       
-     - project: ./Telnet_Server/Telnet_Server.cproject.yml
-       for-context:
+#       - +STM32F746G-DISCO
+#       - +STM32F769I-DISCO
+#       - +STM32F769I-EVAL       
+    - project: ./SNMP_Agent/SNMP_Agent.cproject.yml
+      for-context:
         - +STM32H743I-EVAL
-#         - +STM32F746G-DISCO
-#         - +STM32F769I-DISCO
-#         - +STM32F769I-EVAL        
+#       - +STM32F746G-DISCO
+#       - +STM32F769I-DISCO
+#       - +STM32F769I-EVAL       
+    - project: ./Telnet_Server/Telnet_Server.cproject.yml
+      for-context:
+       - +STM32H743I-EVAL
+#      - +STM32F746G-DISCO
+#      - +STM32F769I-DISCO
+#      - +STM32F769I-EVAL        
