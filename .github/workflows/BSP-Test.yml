@@ -22,6 +22,7 @@ jobs:
           .gitignore
           .ci
           vcpkg-configuration.json
+          CI
 
     - name: Checkout STM32H743I-EVAL_BSP
       uses: actions/checkout@v4
@@ -71,7 +72,6 @@ jobs:
         cpackget add ./CMSIS-Driver_STM32/ARM.CMSIS-Driver_STM32.pdsc
         cpackget list        
         csolution list environment --verbose
-        find /home/runner/ -name '*.pidx'
 
     - name: Show local_repository.pidx content
       run: |
@@ -80,11 +80,6 @@ jobs:
     - name: List packs
       run: |
         cpackget list
-
-    - name: Create CI/Examples directory
-      working-directory: ./
-      run: |
-        mkdir -p CI/Examples
 
     - name: Show directories
       working-directory: ./../
@@ -109,10 +104,6 @@ jobs:
     - name: Copy board layer
       working-directory: ./
       run: |
-          mkdir -p CI/Examples/FileSystem/Board
-          mkdir -p CI/Examples/Network/Board
-          mkdir -p CI/Examples/USB/Device/Board
-          mkdir -p CI/Examples/USB/Host/Board
           cp -rf ./BSP/Layers/IoT/* ./CI/Examples/FileSystem/Board/
           cp -rf ./BSP/Layers/IoT/* ./CI/Examples/Network/Board/
           cp -rf ./BSP/Layers/IoT/* ./CI/Examples/USB/Device/Board/
@@ -131,7 +122,6 @@ jobs:
       run: |
           tree -d -L 5
           ls ./FileSystem/*.yml
-
 
     - name: Initial build test
       working-directory: ./CI/Examples/FileSystem/
