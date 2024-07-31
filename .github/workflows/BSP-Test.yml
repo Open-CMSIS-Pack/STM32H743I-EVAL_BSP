@@ -42,7 +42,7 @@ jobs:
         repository: ARM-software/MDK-Middleware
         path: ./MW
 
-    - name: CMSIS-Driver_STM32
+    - name: Checkout CMSIS-Driver_STM32
       uses: actions/checkout@v4
       with:
         repository: Open-CMSIS-Pack/CMSIS-Driver_STM32
@@ -123,9 +123,14 @@ jobs:
           tree -d -L 5
           ls ./FileSystem/*.yml
 
-    - name: Initial build test
+    - name: FileSystem initial build test
       working-directory: ./CI/Examples/FileSystem/
       run: |
-          cpackget update-index
           cbuild ./FileSystem-CI.csolution.yml --update-rte --packs \
+          --toolchain AC6 --rebuild
+
+    - name: Network initial build test
+      working-directory: ./CI/Examples/Network/
+      run: |
+          cbuild ./Network-CI.csolution.yml --update-rte --packs \
           --toolchain AC6 --rebuild
