@@ -1,4 +1,4 @@
-name: STM32H743I-EVAL_BSP-CI middleware examples
+name: BSP build Test
 
 on:
   workflow_dispatch:
@@ -124,9 +124,9 @@ jobs:
           tree -d -L 5
           ls ./FileSystem/*.yml
 
+
     - name: Initial build test
-      working-directory: ./
+      working-directory: ./CI/Examples/FileSystem/
       run: |
-           cbuild ./CI/Examples/FileSystem/FileSystem-CI.csolution.yml --update-rte --packs \
-           --context ./CI/Examples/FileSystem/FileSystem-CI.Release+STM32H743I-EVAL \
-           --toolchain AC6 --rebuild
+          cbuild ./FileSystem-CI.csolution.yml --update-rte --packs \
+          --toolchain AC6 --rebuild
