@@ -1,0 +1,50 @@
+solution:
+  created-for: CMSIS-Toolbox@2.5.0
+  cdefault:
+
+# select-compiler:  # list of tested compilers that can be selected
+#   - compiler: AC6
+  compiler: AC6
+
+
+  target-types:
+    - type: STM32H743I-EVAL
+      board: STMicroelectronics::STM32H743I-EVAL
+      variables:
+        - Board-Layer: $SolutionDir()$/Board/Board.clayer.yml
+
+#    - type: STM32F746G-DISCO
+#      board: STMicroelectronics::STM32F746G-DISCO
+#      variables:
+#         - Board-Layer: ${CMSIS_PACK_ROOT}/Keil/STM32F746G-DISCO_BSP/1.0.0-dev0/Layers/IoT/Board.clayer.yml
+#    - type: STM32F769I-DISCO
+#      board: STMicroelectronics::STM32F769I-DISCO
+#      variables:
+#         - Board-Layer: ${CMSIS_PACK_ROOT}/Keil/STM32F769I-DISCO_BSP/1.0.0-dev0/Layers/IoT/Board.clayer.yml
+#    - type: STM32F769I-EVAL
+#      board: STMicroelectronics::STM32F769I-EVAL
+#      variables:
+#         - Board-Layer: ${CMSIS_PACK_ROOT}/Keil/STM32F769I-EVAL_BSP/1.0.0-dev0/Layers/IoT/Board.clayer.yml
+
+
+  build-types:
+    - type: Debug
+      debug: on
+      optimize: debug
+    - type: Release
+      debug: off
+      optimize: balanced
+
+  projects:
+    - project: ./Keyboard/Keyboard.cproject.yml
+      for-context:
+        - +STM32H743I-EVAL
+#         - +STM32F746G-DISCO
+#         - +STM32F769I-DISCO
+#         - +STM32F769I-EVAL
+    - project: ./MassStorage/MassStorage.cproject.yml
+      for-context:
+        - +STM32H743I-EVAL
+#         - +STM32F746G-DISCO
+#         - +STM32F769I-DISCO
+#         - +STM32F769I-EVAL
