@@ -63,6 +63,12 @@ jobs:
         repository: Open-CMSIS-Pack/CMSIS-Driver_STM32
         path: ./CMSIS-Driver_STM32
 
+    - name: Show directories after the initial checkout
+      working-directory: ./../
+      run: |
+          tree -d -L 4
+          exit 1
+
     - name: Initialize CMSIS pack root folder
       run: |
         cpackget init https://www.keil.com/pack/index.pidx
