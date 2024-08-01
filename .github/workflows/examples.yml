@@ -18,16 +18,16 @@ jobs:
 
     steps:
 
-      - name: Checkout .ci/Example root folder
+      - name: Checkout .ci/Examples root folder
         uses: actions/checkout@v4
         with:
           sparse-checkout: |
-            .ci/Example
+            .ci/Examples
 
       - name: Install tools
         uses: ARM-software/cmsis-actions/vcpkg@v1
         with:
-          config: "./.ci/Example/vcpkg-configuration.json"
+          config: "./.ci/Examples/vcpkg-configuration.json"
       
       - name: Activate Arm tool license
         uses: ARM-software/cmsis-actions/armlm@v1
@@ -66,7 +66,7 @@ jobs:
           cpackget add ./stm32h7xx_dfp/Keil.STM32H7xx_DFP.pdsc
           cpackget add ./cmsis-driver_stm32/ARM.CMSIS-Driver_STM32.pdsc
 
-      - name: Copy example strucure to .ci/Examples/ folder
+      - name: Copy Bliky example to .ci/Examples/
         working-directory: ./
         run: |
           mkdir -p ./.ci/Examples/Blinky
