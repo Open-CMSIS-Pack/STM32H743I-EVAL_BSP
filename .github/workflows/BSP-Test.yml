@@ -10,23 +10,29 @@ on:
     - cron: '00 20 * * 6'
 
 jobs:
-  install_build:
+  test:                     # Install tools, build 
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false      
       matrix:
-        compiler: [ 
-          {name: AC6}
-        ]
         solution: [ 
-          {name: FileSystem,   dir: FileSystem },
-          {name: Network,      dir: Network    },
-          {name: USB_Device,   dir: USB/Device },
-          {name: USB_Host,     dir: USB/Host   }
+          {name: FileSystem,   dir: FileSystem,   layer: ./BSP/Layers/IoT },
+          {name: Network,      dir: Network,      layer: ./BSP/Layers/IoT },
+          {name: USB_Device,   dir: USB/Device,   layer: ./BSP/Layers/IoT },
+          {name: USB_Host,     dir: USB/Host,     layer: ./BSP/Layers/IoT }
         ]
 
     steps:
+
+    - name: Install tools
+      uses: ARM-software/cmsis-actions/vcpkg@v1
+      with:
+        config: "./.ci/vcpkg-configuration.json"
+
+    - name: Activate Arm tool license
+      uses: ARM-software/cmsis-actions/armlm@v1
+  
     - name: Checkout STM32H743I-EVAL_BSP root
       uses: actions/checkout@v4
       with:
@@ -56,14 +62,6 @@ jobs:
       with:
         repository: Open-CMSIS-Pack/CMSIS-Driver_STM32
         path: ./CMSIS-Driver_STM32
-
-    - name: Install tools
-      uses: ARM-software/cmsis-actions/vcpkg@v1
-      with:
-        config: "./.ci/vcpkg-configuration.json"
-
-    - name: Activate Arm tool license
-      uses: ARM-software/cmsis-actions/armlm@v1
 
     - name: Initialize CMSIS pack root folder
       run: |
@@ -100,15 +98,21 @@ jobs:
     - name: Copy board layer
       working-directory: ./
       run: |
-          cp -rf ./BSP/Layers/IoT/* ./.ci/Examples/${{ matrix.solution.dir }}/Board/
+          cp -rf ${{ matrix.solution.layer }}/* ./.ci/Examples/${{ matrix.solution.dir }}/Board/
 
     - name: Show directories [3]
       working-directory: ./.ci/Examples/
       run: |
           tree -d -L 5
 
-    - name: ${{ matrix.solution.name }} build test
+    - name: ${{ matrix.solution.name }}  AC6 build test
       working-directory: ./.ci/Examples/${{ matrix.solution.dir }}/
       run: |
           cbuild ./${{ matrix.solution.name }}-CI.csolution.yml --update-rte --packs \
-          --toolchain ${{ matrix.compiler.name }} --rebuild
+          --toolchain AC6 --rebuild
+
+    - name: ${{ matrix.solution.name }} GCC build test
+      working-directory: ./.ci/Examples/${{ matrix.solution.dir }}/
+      run: |
+          cbuild ./${{ matrix.solution.name }}-CI.csolution.yml --update-rte --packs \
+          --toolchain GCC --rebuild
