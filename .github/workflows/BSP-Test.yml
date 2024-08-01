@@ -89,14 +89,14 @@ jobs:
 
     - name: ${{ matrix.solution.name }} GCC build test
       if: always()
-      working-directory: ./.ci/Examples/MW-RefApps/${{ matrix.solution.dir }}/
+      working-directory: ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/
       run: |
           cbuild ./${{ matrix.solution.name }}-CI.csolution.yml --update-rte --packs \
           --toolchain GCC --rebuild
   
     - name: ${{ matrix.solution.name }}  AC6 build test
       if: always()
-      working-directory: ./.ci/Examples/MW-RefApps/${{ matrix.solution.dir }}/
+      working-directory: ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/
       run: |
           cbuild ./${{ matrix.solution.name }}-CI.csolution.yml --update-rte --packs \
           --toolchain AC6 --rebuild
