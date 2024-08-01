@@ -49,7 +49,7 @@ jobs:
         with:
           repository: Open-CMSIS-Pack/CMSIS-Driver_STM32
           path: ./CMSIS-Driver_STM32
-
+          
       - name: Show directories after the initial checkout
         working-directory: ./../
         run: |
@@ -62,9 +62,9 @@ jobs:
 
       - name: Add local CMSIS packs
         run: |
-          cpackget add ./stm32h743-eval_bsp/Keil.STM32H743I-EVAL_BSP.pdsc
-          cpackget add ./stm32h7xx_dfp/Keil.STM32H7xx_DFP.pdsc
-          cpackget add ./cmsis-driver_stm32/ARM.CMSIS-Driver_STM32.pdsc
+          cpackget add ./STM32H743I-EVAL_BSP/Keil.STM32H743I-EVAL_BSP.pdsc
+          cpackget add ./STM32H7xx_DFP/Keil.STM32H7xx_DFP.pdsc
+          cpackget add ./CMSIS-Driver_STM32/ARM.CMSIS-Driver_STM32.pdsc
 
       - name: Copy Bliky example to .ci/Examples/
         working-directory: ./
