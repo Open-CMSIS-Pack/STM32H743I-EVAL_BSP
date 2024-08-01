@@ -43,25 +43,21 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: Evagan2018/STM32H743I-EVAL_BSP
-#        path: ./BSP
 
     - name: Checkout STM32H7xx_DFP
       uses: actions/checkout@v4
       with:
         repository: Open-CMSIS-Pack/STM32H7xx_DFP
-#        path: ./DFP
 
     - name: Checkout MDK-Middleware
       uses: actions/checkout@v4
       with:
         repository: ARM-software/MDK-Middleware
-#        path: ./MW
 
     - name: Checkout CMSIS-Driver_STM32
       uses: actions/checkout@v4
       with:
         repository: Open-CMSIS-Pack/CMSIS-Driver_STM32
-#        path: ./CMSIS-Driver_STM32
 
     - name: Show directories after the initial checkout
       working-directory: ./../
