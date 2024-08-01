@@ -66,7 +66,7 @@ jobs:
     - name: Show directories after the initial checkout
       working-directory: ./../
       run: |
-          tree -d -L 4
+          tree -a -d -L 4
           exit 1
 
     - name: Initialize CMSIS pack root folder
