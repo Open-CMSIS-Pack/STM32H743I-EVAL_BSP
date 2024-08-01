@@ -1,4 +1,4 @@
-name: BSP build Test
+name: Test MW-RefApps    # MDK Middleware Reference Applications (Examples) 
 
 on:
   workflow_dispatch:
@@ -67,7 +67,6 @@ jobs:
       working-directory: ./../
       run: |
           tree -a -d -L 4
-          exit 1
 
     - name: Initialize CMSIS pack root folder
       run: |
@@ -76,16 +75,16 @@ jobs:
 
     - name: Add local CMSIS packs
       run: |
-        cpackget add ./BSP/Keil.STM32H743I-EVAL_BSP.pdsc
-        cpackget add ./DFP/Keil.STM32H7xx_DFP.pdsc
-        cpackget add ./MW/Keil.MDK-Middleware.pdsc
+        cpackget add ./STM32H743I-EVAL_BSP/Keil.STM32H743I-EVAL_BSP.pdsc
+        cpackget add ./STM32H7xx_DFP/Keil.STM32H7xx_DFP.pdsc
+        cpackget add ./MDK-Middleware/Keil.MDK-Middleware.pdsc
         cpackget add ./CMSIS-Driver_STM32/ARM.CMSIS-Driver_STM32.pdsc
  
     - name: Copy example strucure to .ci folder
       working-directory: ./
       run: |
-        cp -rf ./BSP/Examples/* ./.ci/Examples/
-        cp -rf ./MW/Examples/* ./.ci/Examples/        
+        cp -rf ./STM32H743I-EVAL_BSP/Examples/* ./.ci/Examples/
+        cp -rf ./MDK-Middleware/Examples/* ./.ci/Examples/        
         cp -rf ${{ matrix.solution.layer }}/* ./.ci/Examples/${{ matrix.solution.dir }}/Board/   # Copy the Board layer
 
     - name: ${{ matrix.solution.name }} GCC build test
