@@ -25,6 +25,12 @@ jobs:
 
     steps:
 
+    - name: Checkout STM32H743I-EVAL_BSP root
+      uses: actions/checkout@v4
+      with:
+        sparse-checkout: |
+          .ci
+
     - name: Install tools
       uses: ARM-software/cmsis-actions/vcpkg@v1
       with:
@@ -33,12 +39,6 @@ jobs:
     - name: Activate Arm tool license
       uses: ARM-software/cmsis-actions/armlm@v1
   
-    - name: Checkout STM32H743I-EVAL_BSP root
-      uses: actions/checkout@v4
-      with:
-        sparse-checkout: |
-          .ci
-
     - name: Checkout STM32H743I-EVAL_BSP
       uses: actions/checkout@v4
       with:
