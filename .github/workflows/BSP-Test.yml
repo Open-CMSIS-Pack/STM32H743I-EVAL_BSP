@@ -17,10 +17,10 @@ jobs:
       fail-fast: false      
       matrix:
         solution: [ 
-          {name: FileSystem,   dir: FileSystem,   layer: ./BSP/Layers/IoT },
-          {name: Network,      dir: Network,      layer: ./BSP/Layers/IoT },
-          {name: USB_Device,   dir: USB/Device,   layer: ./BSP/Layers/IoT },
-          {name: USB_Host,     dir: USB/Host,     layer: ./BSP/Layers/IoT }
+          {name: FileSystem,   dir: FileSystem,   layer: ./STM32H743I-EVAL_BSP/Layers/IoT },
+          {name: Network,      dir: Network,      layer: ./STM32H743I-EVAL_BSP/Layers/IoT },
+          {name: USB_Device,   dir: USB/Device,   layer: ./STM32H743I-EVAL_BSP/Layers/IoT },
+          {name: USB_Host,     dir: USB/Host,     layer: ./STM32H743I-EVAL_BSP/Layers/IoT }
         ]
 
     steps:
