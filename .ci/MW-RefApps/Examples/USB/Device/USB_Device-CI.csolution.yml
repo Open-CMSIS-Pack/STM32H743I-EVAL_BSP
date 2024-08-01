@@ -1,0 +1,27 @@
+solution:
+  created-for: CMSIS-Toolbox@2.5.0
+  cdefault:
+
+# select-compiler:  # list of tested compilers that can be selected
+#   - compiler: AC6
+#  compiler: AC6
+
+
+  target-types:
+    - type: STM32H743I-EVAL
+      board: STMicroelectronics::STM32H743I-EVAL
+      variables:
+        - Board-Layer: $SolutionDir()$/Board/Board.clayer.yml
+
+  build-types:
+    - type: Debug
+      debug: on
+      optimize: debug
+    - type: Release
+      debug: off
+      optimize: balanced
+
+  projects:
+    - project: ./HID/HID.cproject.yml
+    - project: ./MassStorage/MassStorage.cproject.yml
+#   - project: ./VirtualCOM/VirtualCOM.cproject.yml    # CMSIS-Driver UART missing

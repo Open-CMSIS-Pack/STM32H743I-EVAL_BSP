@@ -34,7 +34,7 @@ jobs:
     - name: Install tools
       uses: ARM-software/cmsis-actions/vcpkg@v1
       with:
-        config: "./.ci/vcpkg-configuration.json"
+        config: "./.ci/MW-RefApps/vcpkg-configuration.json"
 
     - name: Activate Arm tool license
       uses: ARM-software/cmsis-actions/armlm@v1
@@ -66,7 +66,7 @@ jobs:
     - name: Show directories after the initial checkout
       working-directory: ./../
       run: |
-          tree -a -d -L 4
+          tree -a -d -L 6
 
     - name: Initialize CMSIS pack root folder
       run: |
@@ -80,23 +80,23 @@ jobs:
         cpackget add ./MDK-Middleware/Keil.MDK-Middleware.pdsc
         cpackget add ./CMSIS-Driver_STM32/ARM.CMSIS-Driver_STM32.pdsc
  
-    - name: Copy example strucure to .ci folder
+    - name: Copy example strucure to .ci/MW-RefApps/ folder
       working-directory: ./
       run: |
-        cp -rf ./STM32H743I-EVAL_BSP/Examples/* ./.ci/Examples/
-        cp -rf ./MDK-Middleware/Examples/* ./.ci/Examples/        
-        cp -rf ${{ matrix.solution.layer }}/* ./.ci/Examples/${{ matrix.solution.dir }}/Board/   # Copy the Board layer
+        cp -rf ./STM32H743I-EVAL_BSP/Examples/* ./.ci/MW-RefApps/Examples/
+        cp -rf ./MDK-Middleware/Examples/* ./.ci/MW-RefApps/Examples/        
+        cp -rf ${{ matrix.solution.layer }}/* ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/   # Copy the Board layer
 
     - name: ${{ matrix.solution.name }} GCC build test
       if: always()
-      working-directory: ./.ci/Examples/${{ matrix.solution.dir }}/
+      working-directory: ./.ci/Examples/MW-RefApps/${{ matrix.solution.dir }}/
       run: |
           cbuild ./${{ matrix.solution.name }}-CI.csolution.yml --update-rte --packs \
           --toolchain GCC --rebuild
   
     - name: ${{ matrix.solution.name }}  AC6 build test
       if: always()
-      working-directory: ./.ci/Examples/${{ matrix.solution.dir }}/
+      working-directory: ./.ci/Examples/MW-RefApps/${{ matrix.solution.dir }}/
       run: |
           cbuild ./${{ matrix.solution.name }}-CI.csolution.yml --update-rte --packs \
           --toolchain AC6 --rebuild
