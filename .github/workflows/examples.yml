@@ -1,4 +1,4 @@
-name: Build - Examples
+name: Build
 on:
   workflow_dispatch:
 #  pull_request:
@@ -9,39 +9,51 @@ on:
 #  push:
 #    branches: [main]
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
-  Build:
+  Build:                     # Install tools, build 
     strategy:
       fail-fast: false
 
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Checkout .ci/Example root folder
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .ci/Example
+
+      - name: Install tools
+        uses: ARM-software/cmsis-actions/vcpkg@v1
+        with:
+          config: "./.ci/Example/vcpkg-configuration.json"
+      
+      - name: Activate Arm tool license
+        uses: ARM-software/cmsis-actions/armlm@v1
+
       - name: Checkout STM32H743I-EVAL_BSP
         uses: actions/checkout@v4
         with:
-          path: ./stm32h743-eval_bsp
+          repository: Evagan2018/STM32H743I-EVAL_BSP
+          path: ./STM32H743I-EVAL_BSP
 
       - name: Checkout STM32H7xx_DFP
         uses: actions/checkout@v4
         with:
           repository: Open-CMSIS-Pack/STM32H7xx_DFP
-          path: ./stm32h7xx_dfp
+          path: ./STM32H7xx_DFP
 
       - name: Checkout CMSIS-Driver_STM32
         uses: actions/checkout@v4
         with:
           repository: Open-CMSIS-Pack/CMSIS-Driver_STM32
-          path: ./cmsis-driver_stm32
+          path: ./CMSIS-Driver_STM32
 
-      - name: Prepare vcpkg env
-        uses: ARM-software/cmsis-actions/vcpkg@main
-        with:
-          config: ./stm32h743-eval_bsp/Examples/Blinky/vcpkg-configuration.json
+      - name: Show directories after the initial checkout
+        working-directory: ./../
+        run: |
+            tree -a -d -L 6
 
       - name: Initialize CMSIS pack root folder
         run: |
@@ -49,24 +61,25 @@ jobs:
           cpackget update-index
 
       - name: Add local CMSIS packs
-        working-directory:
         run: |
           cpackget add ./stm32h743-eval_bsp/Keil.STM32H743I-EVAL_BSP.pdsc
           cpackget add ./stm32h7xx_dfp/Keil.STM32H7xx_DFP.pdsc
           cpackget add ./cmsis-driver_stm32/ARM.CMSIS-Driver_STM32.pdsc
 
-      - name: Activate Arm tool license
+      - name: Copy example strucure to .ci/Examples/ folder
+        working-directory: ./
         run: |
-          armlm activate --server https://mdk-preview.keil.arm.com --product KEMDK-COM0
+          mkdir -p ./.ci/Examples/Blinky
+          cp -rf ./STM32H743I-EVAL_BSP/Examples/Blinky/* ./.ci/Examples/Blinky/
 
-      - uses: ammaraskar/gcc-problem-matcher@master
-
-      - name: Build Blinky
-        working-directory: ./stm32h743-eval_bsp/Examples/Blinky
+      - name: Build Blinky AC6
+        if: always()      
+        working-directory: ./.ci/Examples/Blinky
         run: |
-          cbuild ./Blinky.csolution.yml --packs --update-rte
+          cbuild ./Blinky.csolution.yml --packs --update-rte --packs --toolchain AC6 --rebuild
 
-      - name: Deactivate Arm tool license
-        if: always()
+      - name: Build Blinky GCC
+        if: always()      
+        working-directory: ./.ci/Examples/Blinky
         run: |
-          armlm deactivate --product KEMDK-COM0
+            cbuild ./Blinky.csolution.yml --packs --update-rte --packs --toolchain GCC --rebuild
