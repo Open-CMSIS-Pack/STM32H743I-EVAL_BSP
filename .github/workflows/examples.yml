@@ -1,13 +1,12 @@
 name: Build
 on:
   workflow_dispatch:
-#  pull_request:
-#    paths:
-#      - .github/workflows/examples.yml
-#      - 'CMSIS/**'
-#      - 'Examples/**'
-#  push:
-#    branches: [main]
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  schedule:
+    - cron: '00 20 * * 6'
 
 jobs:
   Build:                     # Install tools, build 
@@ -44,17 +43,12 @@ jobs:
           repository: Open-CMSIS-Pack/STM32H7xx_DFP
           path: ./STM32H7xx_DFP
 
-#      - name: Checkout CMSIS-Driver_STM32
-#        uses: actions/checkout@v4
-#        with:
-#          repository: Open-CMSIS-Pack/CMSIS-Driver_STM32
-#          path: ./CMSIS-Driver_STM32
+      - name: Checkout CMSIS-Driver_STM32
+        uses: actions/checkout@v4
+        with:
+          repository: Open-CMSIS-Pack/CMSIS-Driver_STM32
+          path: ./CMSIS-Driver_STM32
           
-      - name: Show directories after the initial checkout
-        working-directory: ./../
-        run: |
-            tree -a -d -L 6
-
       - name: Initialize CMSIS pack root folder
         run: |
           cpackget init https://www.keil.com/pack/index.pidx
@@ -64,7 +58,7 @@ jobs:
         run: |
           cpackget add ./STM32H743I-EVAL_BSP/Keil.STM32H743I-EVAL_BSP.pdsc
           cpackget add ./STM32H7xx_DFP/Keil.STM32H7xx_DFP.pdsc
-#          cpackget add ./CMSIS-Driver_STM32/ARM.CMSIS-Driver_STM32.pdsc
+          cpackget add ./CMSIS-Driver_STM32/ARM.CMSIS-Driver_STM32.pdsc
 
       - name: Copy Bliky example to .ci/Examples/
         working-directory: ./
