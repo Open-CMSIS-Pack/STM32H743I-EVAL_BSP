@@ -76,4 +76,4 @@ jobs:
         if: always()      
         working-directory: ./.ci/Examples/Blinky
         run: |
-            cbuild ./Blinky.csolution.yml --packs --update-rte --packs --toolchain GCC --rebuild
+          cbuild ./Blinky.csolution.yml --packs --update-rte --packs --toolchain GCC --rebuild
