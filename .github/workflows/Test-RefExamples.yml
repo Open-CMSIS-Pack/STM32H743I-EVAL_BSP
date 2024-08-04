@@ -64,9 +64,9 @@ jobs:
         path: ./CMSIS-Driver_STM32
 
     - name: Show directories after the initial checkout
-      working-directory: ./../
+      working-directory: ./
       run: |
-          tree -a -d -L 6
+          tree -a -d -L 8
 
     - name: Initialize CMSIS pack root folder
       run: |
