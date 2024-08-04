@@ -85,7 +85,7 @@ jobs:
       run: |
         cp -rf ./MDK-Middleware/Examples/* ./.ci/MW-RefApps/Examples/        
         cp -rf ${{ matrix.solution.layer }}/* ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/   # Copy the Board layer
-        cp -rf ./STM32H743I-EVAL_BSP/Examples/* ./.ci/MW-RefApps/Examples/
+        cp -rf ./STM32H743I-EVAL_BSP/Examples/* ./.ci/Examples/
 
     - name: ${{ matrix.solution.name }}  AC6 build test
       if: always()
