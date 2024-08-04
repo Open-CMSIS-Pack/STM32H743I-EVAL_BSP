@@ -91,11 +91,12 @@ jobs:
       working-directory: ./.ci/
       run: |
         tree -a -d -L 6
-        
+
     - name: ${{ matrix.solution.name }}  AC6 build test
       if: always()
       working-directory: ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/
       run: |
+          cat ./${{ matrix.solution.name }}.csolution.yml
           cbuild ./${{ matrix.solution.name }}.csolution.yml --update-rte --packs \
           --toolchain AC6 --rebuild
 
