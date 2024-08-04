@@ -83,10 +83,15 @@ jobs:
     - name: Copy example strucure to .ci/MW-RefApps/ folder
       working-directory: ./
       run: |
-        cp -rf ./MDK-Middleware/Examples/* ./.ci/MW-RefApps/Examples/        
+        cp -rf ./MDK-Middleware/Examples/* ./.ci/MW-RefApps/Examples/
         cp -rf ${{ matrix.solution.layer }}/* ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/   # Copy the Board layer
         cp -rf ./STM32H743I-EVAL_BSP/Examples/* ./.ci/Examples/
 
+    - name: Show directories after the initial checkout
+      working-directory: ./.ci/
+      run: |
+        tree -a -d -L 6
+        
     - name: ${{ matrix.solution.name }}  AC6 build test
       if: always()
       working-directory: ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/
