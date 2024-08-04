@@ -22,3 +22,5 @@ solution:
 
   projects:
     - project: ./File_Demo/File_Demo.cproject.yml
+      for-context:
+        - +STM32H743I-EVAL

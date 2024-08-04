@@ -23,5 +23,9 @@ solution:
 
   projects:
     - project: ./HID/HID.cproject.yml
+      for-context:
+        - +STM32H743I-EVAL
     - project: ./MassStorage/MassStorage.cproject.yml
+      for-context:
+        - +STM32H743I-EVAL
 #   - project: ./VirtualCOM/VirtualCOM.cproject.yml    # CMSIS-Driver UART missing
