@@ -23,8 +23,4 @@ solution:
 
   projects:
     - project: ./Keyboard/Keyboard.cproject.yml
-      for-context:
-        - +STM32H743I-EVAL
     - project: ./MassStorage/MassStorage.cproject.yml
-      for-context:
-        - +STM32H743I-EVAL
