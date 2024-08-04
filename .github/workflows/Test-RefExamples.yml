@@ -80,21 +80,22 @@ jobs:
         cpackget add ./MDK-Middleware/Keil.MDK-Middleware.pdsc
         cpackget add ./CMSIS-Driver_STM32/ARM.CMSIS-Driver_STM32.pdsc
  
-    - name: Copy example strucure to .ci/MW-RefApps/ folder
+    - name: Copy example structure to CI/MW-RefApps/ folder
       working-directory: ./
       run: |
-        cp -rf ./MDK-Middleware/Examples/* ./.ci/MW-RefApps/Examples/
-        cp -rf ${{ matrix.solution.layer }}/* ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/   # Copy the Board layer
-        cp -rf ./STM32H743I-EVAL_BSP/Examples/* ./.ci/Examples/
+        cp -rf ./MDK-Middleware/Examples/* ./CI/MW-RefApps/Examples/
+        cp -rf ${{ matrix.solution.layer }}/* ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/   # Copy the Board layer
+        cp -rf ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
+        cp -rf ./STM32H743I-EVAL_BSP/Examples/* ./CI/Examples/
 
     - name: Show directories after the initial checkout
-      working-directory: ./.ci/
+      working-directory: ./
       run: |
         tree -a -d -L 6
 
     - name: ${{ matrix.solution.name }}  AC6 build test
       if: always()
-      working-directory: ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/
+      working-directory: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
       run: |
           cat ./${{ matrix.solution.name }}.csolution.yml
           cbuild --version
@@ -103,7 +104,7 @@ jobs:
 
     - name: ${{ matrix.solution.name }} GCC build test
       if: always()
-      working-directory: ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/
+      working-directory: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
       run: |
           cbuild ./${{ matrix.solution.name }}.csolution.yml --update-rte --packs \
           --toolchain GCC --rebuild
