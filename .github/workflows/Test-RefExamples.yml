@@ -63,11 +63,6 @@ jobs:
         repository: Open-CMSIS-Pack/CMSIS-Driver_STM32
         path: ./CMSIS-Driver_STM32
 
-    - name: Show directories after the initial checkout
-      working-directory: ./
-      run: |
-          tree -a -d -L 8
-
     - name: Initialize CMSIS pack root folder
       run: |
         cpackget init https://www.keil.com/pack/index.pidx
@@ -93,16 +88,10 @@ jobs:
         cp -rf ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
         cp -rf ./STM32H743I-EVAL_BSP/Examples/* ./CI/Examples/
 
-    - name: Show directories after the initial checkout
-      working-directory: ./
-      run: |
-        tree -a -d -L 6
-
     - name: ${{ matrix.solution.name }}  AC6 build test
       if: always()
       working-directory: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
       run: |
-          cat ./${{ matrix.solution.name }}.csolution.yml
           cbuild --version
           cbuild ./${{ matrix.solution.name }}.csolution.yml --update-rte --packs \
           --toolchain AC6 --rebuild
