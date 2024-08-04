@@ -9,7 +9,7 @@ solution:
 
   target-types:
     - type: STM32H743I-EVAL
-      board: STMicroelectronics::STM32H743I-EVAL
+      board: STM32H743I-EVAL
       variables:
         - Board-Layer: $SolutionDir()$/Board/Board.clayer.yml
 
