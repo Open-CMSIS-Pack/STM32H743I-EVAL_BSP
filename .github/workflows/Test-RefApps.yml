@@ -103,7 +103,7 @@ jobs:
         name: ${{ matrix.solution.name }}_AC6
         path: |
           ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
-          !tmp/
+          !./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/tmp/
         retention-days: 1
 
     - name: ${{ matrix.solution.name }} GCC build test
@@ -122,5 +122,5 @@ jobs:
         name: ${{ matrix.solution.name }}_GCC
         path: |
           ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
-          !tmp/
+          !./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/tmp/
         retention-days: 1
