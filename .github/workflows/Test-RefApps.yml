@@ -90,14 +90,27 @@ jobs:
            cp -rf ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
 
         else
+           echo " "
+           echo " "
            echo "Original csolution content"
            cat ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
            TARGET_TYPE="STM32H743I-EVAL"
            TARGET_BOARD="STM32H743I-EVAL"
-           BOARD_LAYER="$SolutionDir()$/Board/Board.clayer.yml"
-           sed -i "s|target-types:|&\n    - type: $TARGET_TYPE\n      device: $TARGET_BOARD\n      variables:\n      - Board-Layer: $BOARD_LAYER_LAYER|"  ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
+           BOARD_LAYER="\$SolutionDir()\$/Board/Board.clayer.yml"
+           echo $TARGET_TYPE
+           echo $TARGET_BOARD
+           echo BOARD_LAYER
+
+           sed -i "s|target-types:|&\n    - type: $TARGET_TYPE\n      device: $TARGET_BOARD\n      variables:\n        - Board-Layer: $BOARD_LAYER_LAYER|"  ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
+           echo " "
+           echo " "           
            echo "Modified csolution content"
            cat ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
+
+           unset TARGET_TYPE
+           unset TARGET_BOARD
+           unset BOARD_LAYER
+
         fi
 
     - name: ${{ matrix.solution.name }} AC6 build test
