@@ -98,6 +98,7 @@ jobs:
       if: always()
       working-directory: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
       run: |
+        tree      
         rm -rf out
         rm -rf tmp
         zip -r ${{ matrix.solution.name }}_AC6.zip .
@@ -120,6 +121,7 @@ jobs:
       if: always()
       working-directory: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
       run: |
+        tree
         rm -rf out
         rm -rf tmp
         zip -r ${{ matrix.solution.name }}_GCC.zip .
