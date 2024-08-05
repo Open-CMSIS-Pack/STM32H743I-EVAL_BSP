@@ -90,10 +90,14 @@ jobs:
            cp -rf ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
 
         else
+           echo "Original csolution content"
+           cat ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
            TARGET_TYPE="STM32H743I-EVAL"
            TARGET_BOARD="STM32H743I-EVAL"
            BOARD_LAYER="$SolutionDir()$/Board/Board.clayer.yml"
            sed -i "s|target-types:|&\n    - type: $TARGET_TYPE\n      device: $TARGET_BOARD\n      variables:\n      - Board-Layer: $BOARD_LAYER_LAYER|"  ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
+           echo "Modified csolution content"
+           cat ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
         fi
 
     - name: ${{ matrix.solution.name }} AC6 build test
