@@ -89,21 +89,20 @@ jobs:
            cp -rf ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
         fi
 
-    - name: ${{ matrix.solution.name }}  AC6 build test
+    - name: ${{ matrix.solution.name }} AC6 build test
       if: always()
       working-directory: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
       run: |
-          cbuild --version
           cbuild ./${{ matrix.solution.name }}.csolution.yml --update-rte --packs \
           --toolchain AC6 --rebuild
-          rm -rf out
+          rm -rf tmp
 
     - name: Upload Artifact of the ${{ matrix.solution.name }} AC6 build
       if: always()    
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ matrix.solution.name }}_AC6.zip
-        path: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}
+        name: ${{ matrix.solution.name }}_AC6
+        path: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}/
 
     - name: ${{ matrix.solution.name }} GCC build test
       if: always()
@@ -118,5 +117,5 @@ jobs:
       if: always()    
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ matrix.solution.name }}_GCC.zip
-        path: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}
+        name: ${{ matrix.solution.name }}_GCC
+        path: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}/
