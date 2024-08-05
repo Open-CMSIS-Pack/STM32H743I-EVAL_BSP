@@ -98,10 +98,10 @@ jobs:
       if: always()
       working-directory: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
       run: |
-        tree      
-        rm -rf out
         rm -rf tmp
+        tree
         zip -r ${{ matrix.solution.name }}_AC6.zip .
+        rm -rf out
 
     - name: Upload Artifact of the ${{ matrix.solution.name }} AC6 build
       if: always()    
@@ -121,15 +121,15 @@ jobs:
       if: always()
       working-directory: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
       run: |
-        tree
-        rm -rf out
         rm -rf tmp
+        tree
         zip -r ${{ matrix.solution.name }}_GCC.zip .
-    
+        rm -rf out
+
     - name: Upload Artifact of the ${{ matrix.solution.name }} GCC build
       if: always()    
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ matrix.solution.name }}_AC6.zip
+        name: ${{ matrix.solution.name }}_GCC.zip
         path: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}_GCC.zip
 
