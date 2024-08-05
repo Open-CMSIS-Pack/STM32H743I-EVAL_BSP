@@ -9,12 +9,11 @@ on:
   schedule:
     - cron: '00 20 * * 6'
 
-env:
-  TARGET_BOARD="STM32H743I-EVAL"
-
 jobs:
   Test:                     # Install tools, build 
     runs-on: ubuntu-latest
+    env:
+      TARGET_BOARD: STM32H743I-EVAL
 
     strategy:
       fail-fast: false      
@@ -93,9 +92,7 @@ jobs:
            cp -rf ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
         fi
 
-        sed -i "s|target-types:|&\n    - type: ${{ TARGET_BOARD }}\n      board: ${{ TARGET_BOARD }}\n      variables:\n        - Board-Layer: \$SolutionDir()\$/Board/Board.clayer.yml|"  ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
-
-
+        sed -i "s|target-types:|&\n    - type: $TARGET_BOARD\n      board: $TARGET_BOARD\n      variables:\n        - Board-Layer: \$SolutionDir()\$/Board/Board.clayer.yml|"  ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
 
     - name: ${{ matrix.solution.name }} AC6 build test
       if: always()
