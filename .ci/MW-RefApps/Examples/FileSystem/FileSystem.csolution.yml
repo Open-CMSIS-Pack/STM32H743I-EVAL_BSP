@@ -7,10 +7,10 @@ solution:
 #  compiler: AC6
 
   target-types:
-    - type: STM32H743I-EVAL
-      board: STM32H743I-EVAL
-      variables:
-        - Board-Layer: $SolutionDir()$/Board/Board.clayer.yml
+    # - type: <target_name>
+    #   board: <board_name>
+    #   variables:
+    #     - Board-Layer: <board_layer>.clayer.yml
 
   build-types:
     - type: Debug
