@@ -102,7 +102,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.solution.name }}_AC6
-        path: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}/
+        path: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
 
     - name: ${{ matrix.solution.name }} GCC build test
       if: always()
@@ -118,4 +118,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.solution.name }}_GCC
-        path: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}/
+        path: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
