@@ -99,9 +99,9 @@ jobs:
            BOARD_LAYER="\$SolutionDir()\$/Board/Board.clayer.yml"
            echo $TARGET_TYPE
            echo $TARGET_BOARD
-           echo BOARD_LAYER
+           echo $BOARD_LAYER
 
-           sed -i "s|target-types:|&\n    - type: $TARGET_TYPE\n      device: $TARGET_BOARD\n      variables:\n        - Board-Layer: $BOARD_LAYER_LAYER|"  ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
+           sed -i "s|target-types:|&\n    - type: $TARGET_TYPE\n      device: $TARGET_BOARD\n      variables:\n        - Board-Layer: $BOARD_LAYER|"  ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
            echo " "
            echo " "           
            echo "Modified csolution content"
