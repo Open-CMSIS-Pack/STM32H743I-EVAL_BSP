@@ -95,14 +95,15 @@ jobs:
       run: |
           cbuild ./${{ matrix.solution.name }}.csolution.yml --update-rte --packs \
           --toolchain AC6 --rebuild
-          rm -rf tmp
 
     - name: Upload Artifact of the ${{ matrix.solution.name }} AC6 build
-      if: always()    
+      if: always()
       uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.solution.name }}_AC6
-        path: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
+        path: |
+          ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
+          !tmp/
         retention-days: 1
 
     - name: ${{ matrix.solution.name }} GCC build test
@@ -110,19 +111,16 @@ jobs:
       working-directory: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
       run: |
           rm -rf out
+          rm -rf tmp
           cbuild ./${{ matrix.solution.name }}.csolution.yml --update-rte --packs \
           --toolchain GCC --rebuild
 
-    - name: Delete tmp dir after ${{ matrix.solution.name }} GCC build test
-      if: always()
-      working-directory: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
-      run: |
-          rm -rf tmp
-
     - name: Upload Artifact of the ${{ matrix.solution.name }} GCC build
-      if: always()    
+      if: always()
       uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.solution.name }}_GCC
-        path: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
+        path: |
+          ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
+          !tmp/
         retention-days: 1
