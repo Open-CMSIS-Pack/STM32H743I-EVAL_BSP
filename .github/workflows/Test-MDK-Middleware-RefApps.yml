@@ -26,6 +26,7 @@ jobs:
         ]
 
     steps:
+
     - name: Checkout STM32H743I-EVAL_BSP root
       uses: actions/checkout@v4
       with:
