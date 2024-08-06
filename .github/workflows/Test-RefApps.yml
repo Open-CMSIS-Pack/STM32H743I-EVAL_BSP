@@ -26,7 +26,6 @@ jobs:
         ]
 
     steps:
-
     - name: Checkout STM32H743I-EVAL_BSP root
       uses: actions/checkout@v4
       with:
@@ -54,7 +53,7 @@ jobs:
         path: ./STM32H7xx_DFP
 
     - name: Checkout MDK-Middleware
-      uses: actions/checkout@v4
+      uses: actioncheckout@v4
       with:
         repository: ARM-software/MDK-Middleware
         path: ./MDK-Middleware
