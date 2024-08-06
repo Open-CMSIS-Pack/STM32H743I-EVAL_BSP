@@ -19,10 +19,10 @@ jobs:
       fail-fast: false      
       matrix:
         solution: [ 
-          {name: FileSystem,   dir: FileSystem,   layer: ./STM32H743I-EVAL_BSP/Layers/IoT },
-          {name: Network,      dir: Network,      layer: ./STM32H743I-EVAL_BSP/Layers/IoT },
-          {name: USB_Device,   dir: USB/Device,   layer: ./STM32H743I-EVAL_BSP/Layers/IoT },
-          {name: USB_Host,     dir: USB/Host,     layer: ./STM32H743I-EVAL_BSP/Layers/IoT }
+          {name: FileSystem,   dir: FileSystem,   layer_ac6: ./STM32H743I-EVAL_BSP/Layers/IoT,  layer_gcc: ./.ci/Layers/GCC},
+          {name: Network,      dir: Network,      layer_ac6: ./STM32H743I-EVAL_BSP/Layers/IoT,  layer_gcc: ./.ci/Layers/GCC},
+          {name: USB_Device,   dir: USB/Device,   layer_ac6: ./STM32H743I-EVAL_BSP/Layers/IoT,  layer_gcc: ./.ci/Layers/GCC},
+          {name: USB_Host,     dir: USB/Host,     layer_ac6: ./STM32H743I-EVAL_BSP/Layers/IoT,  layer_gcc: ./.ci/Layers/GCC}
         ]
 
     steps:
@@ -83,7 +83,6 @@ jobs:
         mkdir -p ./CI/MW-RefApps/Examples/
         mkdir -p ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/
         cp -rf ./MDK-Middleware/Examples/* ./CI/MW-RefApps/Examples/
-        cp -rf ${{ matrix.solution.layer }}/* ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/   # Copy the Board layer
 
         if [ -e ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml ]
         then
@@ -96,6 +95,7 @@ jobs:
       if: always()
       working-directory: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
       run: |
+          cp -rf ${{ matrix.solution.layer_ac6 }}/* ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/   # Copy the Board layer
           cbuild ./${{ matrix.solution.name }}.csolution.yml --update-rte --packs \
           --toolchain AC6 --rebuild
 
@@ -115,6 +115,8 @@ jobs:
       run: |
           rm -rf out
           rm -rf tmp
+          rm -rf ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/*
+          cp -rf ${{ matrix.solution.layer_gcc }}/* ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/   # Copy the Board layer
           cbuild ./${{ matrix.solution.name }}.csolution.yml --update-rte --packs \
           --toolchain GCC --rebuild
 
