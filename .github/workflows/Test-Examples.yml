@@ -16,6 +16,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout STM32H743I-EVAL_BSP root
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .ci
 
       - name: Install tools
         uses: ARM-software/cmsis-actions/vcpkg@v1
