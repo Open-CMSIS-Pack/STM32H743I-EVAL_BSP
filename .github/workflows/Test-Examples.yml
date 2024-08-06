@@ -17,17 +17,11 @@ jobs:
 
     steps:
 
-      - name: Checkout .ci/Examples root folder
-        uses: actions/checkout@v4
-        with:
-          sparse-checkout: |
-            .ci/Examples
-
       - name: Install tools
         uses: ARM-software/cmsis-actions/vcpkg@v1
         with:
           config: "./.ci/vcpkg-configuration.json"
-      
+
       - name: Activate Arm tool license
         uses: ARM-software/cmsis-actions/armlm@v1
 
@@ -48,7 +42,7 @@ jobs:
         with:
           repository: Open-CMSIS-Pack/CMSIS-Driver_STM32
           path: ./CMSIS-Driver_STM32
-          
+
       - name: Initialize CMSIS pack root folder
         run: |
           cpackget init https://www.keil.com/pack/index.pidx
@@ -60,20 +54,41 @@ jobs:
           cpackget add ./STM32H7xx_DFP/Keil.STM32H7xx_DFP.pdsc
           cpackget add ./CMSIS-Driver_STM32/ARM.CMSIS-Driver_STM32.pdsc
 
-      - name: Copy Bliky example to .ci/Examples/
+      - name: Copy Bliky example to .CI/Examples/
         working-directory: ./
         run: |
-          mkdir -p ./.ci/Examples/Blinky
-          cp -rf ./STM32H743I-EVAL_BSP/Examples/Blinky/* ./.ci/Examples/Blinky/
+          mkdir -p ./.CI/Examples/Blinky
+          cp -rf ./STM32H743I-EVAL_BSP/Examples/Blinky/* ./.CI/Examples/Blinky/
 
       - name: Build Blinky AC6
         if: always()      
-        working-directory: ./.ci/Examples/Blinky
+        working-directory: ./.CI/Examples/Blinky
         run: |
           cbuild ./Blinky.csolution.yml --packs --update-rte --packs --toolchain AC6 --rebuild
 
+      - name: Upload Artifact of the Blinky AC6 build
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Blinky_AC6
+          path: |
+            ./CI/Examples/Blinky/
+            !./CI/Examples/Blinky/tmp/
+          retention-days: 1
+
       - name: Build Blinky GCC
         if: always()      
-        working-directory: ./.ci/Examples/Blinky
+        working-directory: ./.CI/Examples/Blinky
         run: |
+          rm -rf out
+          rm -rf tmp
           cbuild ./Blinky.csolution.yml --packs --update-rte --packs --toolchain GCC --rebuild
+
+      - name: Upload Artifact of the Blinky GCC build
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Blinky_GCC
+          path: |
+              ./CI/Examples/Blinky/
+              !./CI/Examples/Blinky/tmp/

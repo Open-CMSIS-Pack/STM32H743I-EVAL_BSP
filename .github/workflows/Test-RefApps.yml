@@ -80,10 +80,8 @@ jobs:
     - name: Copy example structure to CI/MW-RefApps/ folder
       working-directory: ./
       run: |
-
         mkdir -p ./CI/MW-RefApps/Examples/
         mkdir -p ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/
-
         cp -rf ./MDK-Middleware/Examples/* ./CI/MW-RefApps/Examples/
         cp -rf ${{ matrix.solution.layer }}/* ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/   # Copy the Board layer
 
