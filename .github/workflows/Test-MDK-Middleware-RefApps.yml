@@ -1,4 +1,4 @@
-name: Test MW-RefApps    # MDK Middleware Reference Applications (Examples) 
+name: Test MDK-Middleware RefApps    # MDK-Middleware Reference Applications (Examples) 
 
 on:
   workflow_dispatch:
