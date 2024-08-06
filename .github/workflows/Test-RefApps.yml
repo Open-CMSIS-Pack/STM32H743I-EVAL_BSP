@@ -118,9 +118,7 @@ jobs:
       if: always()
       working-directory: ./
       run: |
-          tree -a -d -L 6
           rm -rf ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/*
-          tree -a -d -L 6
           cp -rf ${{ matrix.solution.layer_gcc }}/* ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/   # Copy the Board layer
 
     - name: ${{ matrix.solution.name }} GCC build test

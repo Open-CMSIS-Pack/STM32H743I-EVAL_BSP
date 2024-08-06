@@ -80,20 +80,3 @@ jobs:
             ./CI/Examples/Blinky/
             !./CI/Examples/Blinky/tmp/
           retention-days: 1
-
-      - name: Build Blinky GCC
-        if: always()      
-        working-directory: ./CI/Examples/Blinky
-        run: |
-          rm -rf out
-          rm -rf tmp
-          cbuild ./Blinky.csolution.yml --packs --update-rte --packs --toolchain GCC --rebuild
-
-      - name: Upload Artifact of the Blinky GCC build
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: Blinky_GCC
-          path: |
-              ./CI/Examples/Blinky/
-              !./CI/Examples/Blinky/tmp/
