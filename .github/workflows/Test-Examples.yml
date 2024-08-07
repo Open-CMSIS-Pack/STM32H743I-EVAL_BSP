@@ -59,7 +59,7 @@ jobs:
           cpackget add ./STM32H7xx_DFP/Keil.STM32H7xx_DFP.pdsc
           cpackget add ./CMSIS-Driver_STM32/ARM.CMSIS-Driver_STM32.pdsc
 
-      - name: Copy Bliky example to .CI/Examples/
+      - name: Copy Blinky example to .CI/Examples/
         working-directory: ./
         run: |
           mkdir -p ./CI/Examples/Blinky

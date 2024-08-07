@@ -1,4 +1,4 @@
-name: Test MW-RefApps    # MDK Middleware Reference Applications (Examples) 
+name: Test MDK-Middleware RefApps    # MDK-Middleware Reference Applications (Examples) 
 
 on:
   workflow_dispatch:
@@ -26,7 +26,6 @@ jobs:
         ]
 
     steps:
-
     - name: Checkout STM32H743I-EVAL_BSP root
       uses: actions/checkout@v4
       with:
