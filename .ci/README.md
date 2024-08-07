@@ -1,4 +1,4 @@
-# Contiguous Integration (CI) Test for Board Support Pack (BSP)
+# Continuous  Integration (CI) Test for Board Support Pack (BSP)
   
 Content of `.ci` Directory   | Description
 :----------------------------|:-----------------

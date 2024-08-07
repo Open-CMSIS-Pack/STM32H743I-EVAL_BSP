@@ -15,7 +15,7 @@ This BSP uses the generator integration of the [CMSIS-Toolbox to Configure STM32
 
 Directory                   | Description
 :---------------------------|:--------------
-[.ci](./.ci)                | Files that are related to the Contiguous Integration (CI) tests of this BSP. 
+[.ci](./.ci)                | Files that are related to the Continuous Integration (CI) tests of this BSP. 
 [.github/workflows](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/.github/workflows)  | [GitHub Actions](#github-actions) scripts described below.
 [CMSIS/Driver](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/CMSIS/Driver)            | Contains a [CMSIS-Driver VIO](https://arm-software.github.io/CMSIS_6/latest/Driver/group__vio__interface__gr.html) that is configured for the board peripherals.
 [Documents](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/Documents)                  | Information about the board provided by STMicroelectronics.
