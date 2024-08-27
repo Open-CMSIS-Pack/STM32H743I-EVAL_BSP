@@ -21,11 +21,18 @@
  *
  *---------------------------------------------------------------------------*/
 
+#ifdef   CMSIS_target_header
+#include CMSIS_target_header
+#else
 #include "Driver_USART.h"
+#endif
+
+#ifndef RETARGET_STDIO_UART
+#error "RETARGET_STDIO_UART not defined!"
+#endif
 
 // Compile-time configuration
-#define USART_DRV_NUM           1
-#define USART_BAUDRATE          115200
+#define UART_BAUDRATE     115200
 
 // Exported functions
 extern int stdio_init     (void);
@@ -33,8 +40,11 @@ extern int stderr_putchar (int ch);
 extern int stdout_putchar (int ch);
 extern int stdin_getchar  (void);
 
-extern ARM_DRIVER_USART     ARM_Driver_USART_(USART_DRV_NUM);
-#define ptrUSART          (&ARM_Driver_USART_(USART_DRV_NUM))
+#ifndef CMSIS_target_header
+extern ARM_DRIVER_USART   ARM_Driver_USART_(RETARGET_STDIO_UART);
+#endif
+
+#define ptrUSART          (&ARM_Driver_USART_(RETARGET_STDIO_UART))
 
 /**
   Initialize stdio
@@ -56,7 +66,7 @@ int stdio_init (void) {
                         ARM_USART_PARITY_NONE       |
                         ARM_USART_STOP_BITS_1       |
                         ARM_USART_FLOW_CONTROL_NONE,
-                        USART_BAUDRATE) != ARM_DRIVER_OK) {
+                        UART_BAUDRATE) != ARM_DRIVER_OK) {
     return -1;
   }
 
@@ -86,7 +96,7 @@ int stderr_putchar (int ch) {
     return -1;
   }
 
-  while (ptrUSART->GetTxCount() != 1U);
+  while (ptrUSART->GetStatus().tx_busy != 0U);
 
   return ch;
 }

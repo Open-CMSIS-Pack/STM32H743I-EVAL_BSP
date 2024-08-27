@@ -29,3 +29,5 @@ project:
       files:
         - file: Blinky.c
         - file: retarget_stdio.c
+          define:
+            - RETARGET_STDIO_UART: 1
