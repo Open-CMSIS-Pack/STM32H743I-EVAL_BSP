@@ -1,4 +1,4 @@
-/*
+/* Modified by Arm
 ******************************************************************************
 **
 **  File        : LinkerScript.ld
@@ -35,7 +35,7 @@
 ENTRY(Reset_Handler)
 
 /* Highest address of the user mode stack */
-_estack = ORIGIN(RAM) + LENGTH(RAM);    /* end of RAM */
+_estack = ORIGIN(RAM_D1) + LENGTH(RAM_D1);    /* end of RAM */
 /* Generate a link error if heap and stack don't fit into RAM */
 _Min_Heap_Size = 0x400;      /* required amount of heap  */
 _Min_Stack_Size = 0x400; /* required amount of stack */
@@ -43,17 +43,12 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 /* Specify the memory areas */
 MEMORY
 {
-  DTCMRAM	(xrw)	: ORIGIN = 0x20000000, LENGTH = 128K
-  FLASH	(rx)	: ORIGIN = 0x08000000, LENGTH = 2048K
-  RxDecripSection	(xrw)	: ORIGIN = 0x30000000, LENGTH = 128
-  TxDecripSection	(xrw)	: ORIGIN = 0x30000080, LENGTH = 128
-  driver.eth_mac0_tx_buf	(xrw)	: ORIGIN = 0x30001900, LENGTH = 6K
-  ITCMRAM	(xrw)	: ORIGIN = 0x00000000, LENGTH = 64K
-  RAM_D3	(xrw)	: ORIGIN = 0x38000000, LENGTH = 64K
-  RAM_D2	(xrw)	: ORIGIN = 0x30003100, LENGTH = 282368
-  RAM	(xrw)	: ORIGIN = 0x24000000, LENGTH = 504K
-  driver.mci1	(xrw)	: ORIGIN = 0x2407e000, LENGTH = 8K
-  driver.eth_mac0_rx_buf	(xrw)	: ORIGIN = 0x30000100, LENGTH = 6K
+  FLASH (rx)     : ORIGIN = 0x08000000, LENGTH = 2048K
+  DTCMRAM (xrw)  : ORIGIN = 0x20000000, LENGTH = 128K
+  RAM_D1 (xrw)   : ORIGIN = 0x24000000, LENGTH = 512K
+  RAM_D2 (xrw)   : ORIGIN = 0x30000000, LENGTH = 288K
+  RAM_D3 (xrw)   : ORIGIN = 0x38000000, LENGTH = 64K
+  ITCMRAM (xrw)  : ORIGIN = 0x00000000, LENGTH = 64K
 }
 
 /* Define output sections */
@@ -142,7 +137,7 @@ SECTIONS
 
     . = ALIGN(4);
     _edata = .;        /* define a global symbol at data end */
-  } >RAM AT> FLASH
+  } >RAM_D1 AT> FLASH
 
   /* Uninitialized data section */
   . = ALIGN(4);
@@ -158,7 +153,17 @@ SECTIONS
     . = ALIGN(4);
     _ebss = .;         /* define a global symbol at bss end */
     __bss_end__ = _ebss;
-  } >RAM
+  } >RAM_D1
+
+  /* Drivers buffers and descriptors */
+  .drivers_RAM :
+  {
+    . = ALIGN(4);
+    *(.RxDecripSection)
+    *(.TxDecripSection)
+    *(.driver.*)
+    . = ALIGN(4);
+  } >RAM_D1
 
   /* User_heap_stack section, used to check that there is enough RAM left */
   ._user_heap_stack :
@@ -169,7 +174,7 @@ SECTIONS
     . = . + _Min_Heap_Size;
     . = . + _Min_Stack_Size;
     . = ALIGN(8);
-  } >RAM
+  } >RAM_D1
 
   /* Remove information from the standard libraries */
   /DISCARD/ :
@@ -180,79 +185,6 @@ SECTIONS
   }
 
   .ARM.attributes 0 : { *(.ARM.attributes) }
-
- /*  Unitialized DTCMRAM section into "DTCMRAM" DTCMRAM type memory */
- .DTCMRAM_Section :
-  {
-    . = ALIGN(4);
-    KEEP (*(.DTCMRAM_Section))
-    . = ALIGN(4);
-  } >DTCMRAM
-
- /*  Unitialized RxDecripSection section into "RxDecripSection" RxDecripSection type memory */
- .RxDecripSection_Section :
-  {
-    . = ALIGN(4);
-    KEEP (*(.RxDecripSection))
-    . = ALIGN(4);
-  } >RxDecripSection
-
- /*  Unitialized TxDecripSection section into "TxDecripSection" TxDecripSection type memory */
- .TxDecripSection_Section :
-  {
-    . = ALIGN(4);
-    KEEP (*(.TxDecripSection))
-    . = ALIGN(4);
-  } >TxDecripSection
-
- /*  Unitialized driver.eth_mac0_tx_buf section into "driver.eth_mac0_tx_buf" driver.eth_mac0_tx_buf type memory */
- .driver.eth_mac0_tx_buf_Section :
-  {
-    . = ALIGN(4);
-    KEEP (*(.driver.eth_mac0_tx_buf))
-    . = ALIGN(4);
-  } >driver.eth_mac0_tx_buf
-
- /*  Unitialized ITCMRAM section into "ITCMRAM" ITCMRAM type memory */
- .ITCMRAM_Section :
-  {
-    . = ALIGN(4);
-    KEEP (*(.ITCMRAM_Section))
-    . = ALIGN(4);
-  } >ITCMRAM
-
- /*  Unitialized RAM_D3 section into "RAM_D3" RAM_D3 type memory */
- .RAM_D3_Section :
-  {
-    . = ALIGN(4);
-    KEEP (*(.RAM_D3_Section))
-    . = ALIGN(4);
-  } >RAM_D3
-
- /*  Unitialized RAM_D2 section into "RAM_D2" RAM_D2 type memory */
- .RAM_D2_Section :
-  {
-    . = ALIGN(4);
-    KEEP (*(.RAM_D2_Section))
-    . = ALIGN(4);
-  } >RAM_D2
-
- /*  Unitialized driver.mci1 section into "driver.mci1" driver.mci1 type memory */
- .driver.mci1_Section :
-  {
-    . = ALIGN(4);
-    KEEP (*(.driver.mci1))
-    . = ALIGN(4);
-  } >driver.mci1
-
- /*  Unitialized driver.eth_mac0_rx_buf section into "driver.eth_mac0_rx_buf" driver.eth_mac0_rx_buf type memory */
- .driver.eth_mac0_rx_buf_Section :
-  {
-    . = ALIGN(4);
-    KEEP (*(.driver.eth_mac0_rx_buf))
-    . = ALIGN(4);
-  } >driver.eth_mac0_rx_buf
-
 }
 
 
