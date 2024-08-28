@@ -1,5 +1,4 @@
 loadboard STM32H743I-EVAL allmodes
 project name STM32CubeMX
 project toolchain "MDK-ARM V5"
-project path "D:\GitHub\Open-CMSIS-Pack\STM32H743I-EVAL_BSP\Examples\Blinky\STM32CubeMX\STM32H743I-EVAL"
 SetCopyLibrary "copy only"

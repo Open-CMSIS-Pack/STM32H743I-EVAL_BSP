@@ -3,9 +3,11 @@ solution:
   created-for: CMSIS-Toolbox@2.5.0
   cdefault:
 
-# select-compiler:  # list of tested compilers that can be selected
-#   - compiler: AC6
-  compiler: AC6
+  # List of tested compilers that can be selected
+  select-compiler:
+    - compiler: AC6
+
+  # compiler: AC6
 
   # List the packs that define the device and/or board.
   packs:
