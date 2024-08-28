@@ -143,7 +143,6 @@ int main(void)
 
   /* USER CODE BEGIN SysInit */
   SystemCoreClockUpdate();
-
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
