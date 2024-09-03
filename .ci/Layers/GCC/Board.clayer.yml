@@ -57,3 +57,7 @@ layer:
       files:
         - file: ./STM32H743I-EVAL.h
         - file: ./retarget_stdio.c
+
+  linker:
+    - script: ./CubeMX/STM32CubeMX/STM32CubeIDE/STM32H743XIHX_FLASH.ld
+      for-compiler: GCC
