@@ -15,13 +15,13 @@ This BSP uses the generator integration of the [CMSIS-Toolbox to Configure STM32
 
 Directory                   | Description
 :---------------------------|:--------------
-[.ci](./.ci)                | Files that are related to the Continuous Integration (CI) tests of this BSP. 
-[.github/workflows](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/.github/workflows)  | [GitHub Actions](#github-actions) scripts described below.
-[CMSIS/Driver](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/CMSIS/Driver)            | Contains a [CMSIS-Driver VIO](https://arm-software.github.io/CMSIS_6/latest/Driver/group__vio__interface__gr.html) that is configured for the board peripherals.
-[Documents](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/Documents)                  | Information about the board provided by STMicroelectronics.
-[Examples/Blinky](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/Examples/Blinky)      | Blinky example in *csolution project format* using [CMSIS-Driver VIO](https://arm-software.github.io/CMSIS_6/latest/Driver/group__vio__interface__gr.html) and [CMSIS-Compiler](https://arm-software.github.io/CMSIS-Compiler/main/index.html) for printf I/O retargeting.
-[Images](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/Images)                        | [Pictures](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/blob/main/Images/stm32h743i-eval_large.png) of the board.
-[Layers](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/Layers)                        | Board layers for using the board with [CMSIS-Toolbox - Reference Applications](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/ReferenceApplications.md).
+[.ci](./.ci)                | Files that are related to the Continuous Integration (CI) tests of this BSP.
+[.github/workflows](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/.github/workflows) | [GitHub Actions](#github-actions) scripts described below.
+[CMSIS/Driver](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/CMSIS/Driver)           | Contains a [CMSIS-Driver VIO](https://arm-software.github.io/CMSIS_6/latest/Driver/group__vio__interface__gr.html) that is configured for the board peripherals.
+[Documents](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/Documents)                 | Information about the board provided by STMicroelectronics.
+[Examples/Blinky](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/Examples/Blinky)     | Blinky example in *csolution project format* using [CMSIS-Driver VIO](https://arm-software.github.io/CMSIS_6/latest/Driver/group__vio__interface__gr.html) and [CMSIS-Compiler](https://arm-software.github.io/CMSIS-Compiler/main/index.html) for printf I/O retargeting.
+[Images](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/Images)                       | [Pictures](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/blob/main/Images/stm32h743i-eval_large.png) of the board.
+[Layers](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/Layers)                       | Board layers for using the board with [CMSIS-Toolbox - Reference Applications](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/ReferenceApplications.md).
 
 ## Usage
 
@@ -59,8 +59,8 @@ This development repository can be used in a local directory and [mapped as soft
 
 The software pack is generated using bash shell scripts.
 
-- `./gen_pack.sh` based on [Open-CMSIS-Pack/gen-pack](https://github.com/Open-CMSIS-Pack/gen-pack)
-generates the software pack. Run this script locally with:
+- `./gen_pack.sh` based on [Open-CMSIS-Pack/gen-pack](https://github.com/Open-CMSIS-Pack/gen-pack) generates the software pack.
+Run this script locally with:
 
       STM32H743I-EVAL_BSP $ ./gen_pack.sh
 
