@@ -9,14 +9,14 @@ on:
     - cron: '00 20 * * 6'
 
 jobs:
-  Test-Examples:                     # Install tools, build 
+  Test-Examples:                     # Install tools, build
     strategy:
       fail-fast: false
 
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout STM32H743I-EVAL_BSP root
+      - name: Checkout .ci folder
         uses: actions/checkout@v4
         with:
           sparse-checkout: |
@@ -30,23 +30,22 @@ jobs:
       - name: Activate Arm tool license
         uses: ARM-software/cmsis-actions/armlm@v1
 
-      - name: Checkout STM32H743I-EVAL_BSP
+      - name: Checkout current repository
         uses: actions/checkout@v4
         with:
-          repository: Open-CMSIS-Pack/STM32H743I-EVAL_BSP
-          path: ./STM32H743I-EVAL_BSP
+          path: ./BSP
 
       - name: Checkout STM32H7xx_DFP
         uses: actions/checkout@v4
         with:
           repository: Open-CMSIS-Pack/STM32H7xx_DFP
-          path: ./STM32H7xx_DFP
+          path: ./DFP
 
       - name: Checkout CMSIS-Driver_STM32
         uses: actions/checkout@v4
         with:
           repository: Open-CMSIS-Pack/CMSIS-Driver_STM32
-          path: ./CMSIS-Driver_STM32
+          path: ./Drivers
 
       - name: Initialize CMSIS pack root folder
         run: |
@@ -55,18 +54,18 @@ jobs:
 
       - name: Add local CMSIS packs
         run: |
-          cpackget add ./STM32H743I-EVAL_BSP/Keil.STM32H743I-EVAL_BSP.pdsc
-          cpackget add ./STM32H7xx_DFP/Keil.STM32H7xx_DFP.pdsc
-          cpackget add ./CMSIS-Driver_STM32/ARM.CMSIS-Driver_STM32.pdsc
+          cpackget add ./BSP/Keil.STM32H743I-EVAL_BSP.pdsc
+          cpackget add ./DFP/Keil.STM32H7xx_DFP.pdsc
+          cpackget add ./Drivers/ARM.CMSIS-Driver_STM32.pdsc
 
-      - name: Copy Blinky example to .CI/Examples/
+      - name: Copy Blinky example to CI/Examples/ folder
         working-directory: ./
         run: |
           mkdir -p ./CI/Examples/Blinky
-          cp -rf ./STM32H743I-EVAL_BSP/Examples/Blinky/* ./CI/Examples/Blinky/
+          cp -rf ./BSP/Examples/Blinky/* ./CI/Examples/Blinky/
 
       - name: Build Blinky AC6
-        if: always()      
+        if: always()
         working-directory: ./CI/Examples/Blinky
         run: |
           cbuild ./Blinky.csolution.yml --packs --update-rte --packs --toolchain AC6 --rebuild
