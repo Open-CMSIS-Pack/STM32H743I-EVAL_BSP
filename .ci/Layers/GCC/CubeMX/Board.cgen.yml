@@ -19,8 +19,6 @@ generator-import:
         - file: ./STM32CubeMX/Src/stm32h7xx_hal_timebase_tim.c
         - file: ./STM32CubeMX/STM32CubeIDE/Application/Startup/startup_stm32h743xihx.s
         - file: ./STM32CubeMX/Src/system_stm32h7xx.c
-        - file: ./STM32CubeMX/STM32CubeIDE/STM32H743XIHX_FLASH.ld
-        - file: ./STM32CubeMX/STM32CubeIDE/STM32H743XIHX_RAM.ld
     - group: STM32 HAL Driver
       files:
         - file: ./STM32CubeMX/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c
