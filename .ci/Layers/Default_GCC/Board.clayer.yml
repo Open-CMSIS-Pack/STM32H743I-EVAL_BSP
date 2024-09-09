@@ -1,6 +1,6 @@
 layer:
   type: Board
-  description: STM32H743I-EVAL board setup for IoT (GCC)
+  description: Default STM32H743I-EVAL board setup (GCC)
   for-board: STMicroelectronics::STM32H743I-EVAL
 
   generators:

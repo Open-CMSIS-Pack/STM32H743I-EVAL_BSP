@@ -2,7 +2,7 @@
   
 Content of `.ci` Directory   | Description
 :----------------------------|:-----------------
-`./Layers/GCC`               | Board layers for the GCC compiler.
+`./Layers/Default_GCC`       | Default Board layer for the GCC compiler.
 `./MW-RefApps`               | Patch files for MDK-Middleware reference applications.
 `vcpkg-configuration.json`   | Tool setup the CI test
 

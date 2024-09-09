@@ -16,7 +16,7 @@
     <release version="1.0.0-dev">
       Prepared for new CMSIS-Toolbox CubeMX integration
       Board description for STM32H743I-EVAL
-      Board Layer for IoT
+      Default Board Layer
       Drivers:
       - CMSIS-Driver VIO
     </release>
@@ -68,7 +68,7 @@
   </components>
 
   <csolution>
-    <clayer type="Board" path="Layers/IoT" file="Board.clayer.yml" copy-to="Board/STM32H743I-EVAL" condition="STM32H743I-EVAL"/>
+    <clayer type="Board" path="Layers/Default" file="Board.clayer.yml" copy-to="Board/STM32H743I-EVAL" condition="STM32H743I-EVAL"/>
   </csolution>
 
   <boards>
