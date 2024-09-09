@@ -28,7 +28,7 @@ Directory                   | Description
 This BSP requires the [Device Family Pack (DFP) for the STM32H7 series](https://github.com/Open-CMSIS-Pack/STM32H7xx_DFP).
 
 - [Examples/Blinky](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/Examples/Blinky) shows the usage in a [*csolution project*](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/blob/main/Examples/Blinky/Blinky.csolution.yml).
-  
+
 - [Board Layers](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/Layers) are designed for [Reference Applications](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/ReferenceApplications.md) and allow to run various device-agnostic examples on this board.
 
 The device is configured for this board using [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html). For additional information refer to:

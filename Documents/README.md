@@ -24,7 +24,7 @@ The expansion connectors provide an easy way to add specialized features, while 
 # Technical reference
 
 - [STM32H743XI microcontroller](https://www.st.com/en/microcontrollers-microprocessors/stm32h743xi.html)
-- [STM32H743I board](https://www.st.com/en/evaluation-tools/stm32h743i-eval.html)
+- [STM32H743I-EVAL board](https://www.st.com/en/evaluation-tools/stm32h743i-eval.html)
 - [User manual](https://www.st.com/resource/en/user_manual/um2198-evaluation-boards-with-stm32h743xi-and-stm32h753xi-mcus-stmicroelectronics.pdf)
 - [Data brief](https://www.st.com/resource/en/data_brief/stm32h743i-eval.pdf)
 - [Schematic](https://www.st.com/resource/en/schematic_pack/mb1246-b0x_schematic.pdf)
