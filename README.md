@@ -47,6 +47,8 @@ By default the [Board Layers](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL
   - Select `STM32CubeIDE` and disable `Generate Under Root`.
   - Click `GENERATE CODE` to recreate the CubeMX generated files for the GCC compiler.
 
+- In the `*.clayer.yml` file, update `linker:` node configuration to reference appropriate GCC linker script.
+  The GCC linker script is typically generated in the `STM32CubeMX/STM32CubeIDE` folder. Customize the GCC linker script file to your project's requirements.
 - Rebuild the project using the CMSIS-Toolbox command `cbuild *.csolution.yml`.
 
 ## Using the development repository
