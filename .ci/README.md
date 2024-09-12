@@ -1,5 +1,5 @@
 # Continuous  Integration (CI) Test for Board Support Pack (BSP)
-  
+
 Content of `.ci` Directory   | Description
 :----------------------------|:-----------------
 `./Layers/Default_GCC`       | Default Board layer for the GCC compiler.
