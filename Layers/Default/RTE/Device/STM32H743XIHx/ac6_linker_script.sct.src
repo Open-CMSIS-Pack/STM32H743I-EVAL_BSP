@@ -73,11 +73,6 @@ LR_ROM0 __ROM0_BASE __ROM0_SIZE  {
 
 #if __RAM1_SIZE > 0
   RW_RAM1 __RAM1_BASE __RAM1_SIZE  {
-    *(.RxDecripSection)
-    *(.TxDecripSection)
-    *(.driver.eth_mac0_rx_buf)
-    *(.driver.eth_mac0_tx_buf)
-    *(.driver.mci1)
    .ANY (+RW +ZI)
   }
 #endif
