@@ -73,13 +73,16 @@
 
   <boards>
     <!-- STM32H743I-EVAL -->
-    <board vendor="STMicroelectronics" name="STM32H743I-EVAL" revision="Rev.B" salesContact="http://www.st.com/stonline/contactus/contacts/index.php">
-      <description>STMicroelectronics STM32H743I-EVAL Evaluation Board Support and Examples</description>
+    <board vendor="STMicroelectronics" name="STM32H743I-EVAL" revision="Rev.B"
+           salesContact="https://www.st.com/content/st_com/en/contact-us.html">
+      <description>STM32 Evaluation development board with STM32H743XIHx MCU</description>
       <image small="Images/stm32h743i-eval_small.png"
-             large="Images/stm32h743i-eval_large.png"/>
-      <book category="overview"  name="http://www.st.com/en/evaluation-tools/stm32h743i-eval.html" title="STM32H743I_EVAL Evaluation Board Web Page"/>
-      <book category="manual"    name="https://www.st.com/resource/en/data_brief/stm32h743i-eval.pdf" title="Data brief"/>
-      <book category="other"     name="Documents/README.md" title="Guide" public="true"/>
+             large="Images/stm32h743i-eval_large.png" public="true"/>
+      <book category="overview"  name="https://www.st.com/en/evaluation-tools/stm32h743i-eval.html" title="STM32H743I_EVAL Board"/>
+      <book category="overview"  name="https://www.st.com/resource/en/data_brief/stm32h743i-eval.pdf" title="Data Brief"/>
+      <book category="manual"    name="https://www.st.com/resource/en/user_manual/um2198-evaluation-boards-with-stm32h743xi-and-stm32h753xi-mcus-stmicroelectronics.pdf" title="User Manual"/>
+      <book category="schematic" name="https://www.st.com/resource/en/schematic_pack/mb1246-b0x_schematic.pdf" title="Schematics"/>
+      <book category="other"     name="Documents/README.md" title="Guide"/>
       <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32H743XIHx"/>
       <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32H743"/>
       <feature type="ODbg"      n="1"              name="On-board ST-LINK/V2"/>
