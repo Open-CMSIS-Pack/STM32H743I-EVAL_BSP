@@ -24,7 +24,7 @@ Refer to ["Configure STM32 Devices with CubeMX"](https://github.com/Open-CMSIS-P
 |:----------------------|:----------------------------------------------
 | Driver_ETH_MAC0       | ETH
 | Driver_ETH_PHY0       | LAN8742A (external)
-| Driver_GPIO0          | GPIO0
+| Driver_GPIO0          | GPIO
 | Driver_MCI1           | SDMMC1
 | Driver_USBD0          | USB_OTG_FS
 | Driver_USBH1          | USB_OTG_HS
@@ -33,13 +33,6 @@ Refer to ["Configure STM32 Devices with CubeMX"](https://github.com/Open-CMSIS-P
 
 | CMSIS-Driver VIO      | Physical resource
 |:----------------------|:----------------------------------------------
-| vioBUTTON0            | Button USER (PC13)
-| vioLED0               | LED3 RED    (PA4)
-| vioLED1               | LED1 GREEN  (PF10)
-
-## Board configuration
-
-**Board setup**
-  - Insure that the **JP10** is in the **PSU** position and connect 5V power supply to the **CN10** connector
-  - Check that the Boot selection switch **SW1** is in the **0** / default position
-  - Connect a **USB micro-B cable** between the **STLK** connector and your **Personal Computer**
+| vioBUTTON0            | Tamper & Key Button (PC13)
+| vioLED0               | LD3 Red             (PA4)
+| vioLED1               | LD1 Green           (PF10)
