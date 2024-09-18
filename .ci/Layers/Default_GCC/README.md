@@ -24,7 +24,7 @@ Refer to ["Configure STM32 Devices with CubeMX"](https://github.com/Open-CMSIS-P
 |:----------------------|:----------------------------------------------
 | Driver_ETH_MAC0       | ETH
 | Driver_ETH_PHY0       | LAN8742A (external)
-| Driver_GPIO0          | GPIO0
+| Driver_GPIO0          | GPIO
 | Driver_MCI1           | SDMMC1
 | Driver_USBD0          | USB_OTG_FS
 | Driver_USBH1          | USB_OTG_HS

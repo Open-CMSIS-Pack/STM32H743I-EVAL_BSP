@@ -1,4 +1,4 @@
-/* Modified by Arm
+/*
 ******************************************************************************
 **
 **  File        : LinkerScript.ld
@@ -153,16 +153,6 @@ SECTIONS
     . = ALIGN(4);
     _ebss = .;         /* define a global symbol at bss end */
     __bss_end__ = _ebss;
-  } >RAM_D1
-
-  /* Drivers buffers and descriptors */
-  .drivers_RAM :
-  {
-    . = ALIGN(4);
-    *(.RxDecripSection)
-    *(.TxDecripSection)
-    *(.driver.*)
-    . = ALIGN(4);
   } >RAM_D1
 
   /* User_heap_stack section, used to check that there is enough RAM left */
