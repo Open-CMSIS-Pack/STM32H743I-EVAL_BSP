@@ -36,10 +36,3 @@ Refer to ["Configure STM32 Devices with CubeMX"](https://github.com/Open-CMSIS-P
 | vioBUTTON0            | Button USER (PC13)
 | vioLED0               | LED3 RED    (PA4)
 | vioLED1               | LED1 GREEN  (PF10)
-
-## Board configuration
-
-**Board setup**
-  - Insure that the **JP10** is in the **PSU** position and connect 5V power supply to the **CN10** connector
-  - Check that the Boot selection switch **SW1** is in the **0** / default position
-  - Connect a **USB micro-B cable** between the **STLK** connector and your **Personal Computer**
