@@ -1,5 +1,6 @@
-Board: STMicroelectronics [STM32H743I-EVAL](https://www.st.com/en/evaluation-tools/stm32h743i-eval.html)
-------------------------------------------
+# Board: STMicroelectronics [STM32H743I-EVAL](https://www.st.com/en/evaluation-tools/stm32h743i-eval.html)
+
+## Board Layer
 
 Device: **STM32H743XIH6**
 System Core Clock: **400 MHz**

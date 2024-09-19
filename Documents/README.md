@@ -1,4 +1,6 @@
-# Overview
+# STM32H743I-EVAL Evaluation board
+
+## Overview
 
 The STM32H743I-EVAL and STM32H753I-EVAL Evaluation boards (STM32H7x3I-EVAL) are high-end development platforms for the Arm® Cortex®-M7-based STM32H743XI and STM32H753XI microcontrollers, respectively. The STM32H7x3I-EVAL Evaluation boards provide access to all the STM32 peripherals for user applications, and include an embedded ST-LINK debugger/programmer.
 
@@ -6,11 +8,11 @@ The full range of the STM32H7x3I-EVAL hardware features helps develop applicatio
 
 The expansion connectors provide an easy way to add specialized features, while ETM trace is supported through external probes.
 
-# Getting started
+## Getting started
 
 - [User manual](https://www.st.com/resource/en/user_manual/um2198-evaluation-boards-with-stm32h743xi-and-stm32h753xi-mcus-stmicroelectronics.pdf)
 
-## ST-LINK driver installation and firmware upgrade (on Microsoft Windows)
+### ST-LINK driver installation and firmware upgrade (on Microsoft Windows)
 
 1. Download the latest [ST-LINK driver](https://www.st.com/en/development-tools/stsw-link009.html).
 2. Extract the archive and run `dpinst_amd64.exe`. Follow the displayed instructions.
@@ -21,7 +23,7 @@ The expansion connectors provide an easy way to add specialized features, while 
 7. When the ST-LINK driver is correctly installed, the current ST-LINK version is displayed.
 8. Press the **Yes >>>>** button to start the firmware upgrade process.
 
-# Technical reference
+## Technical reference
 
 - [STM32H743XI microcontroller](https://www.st.com/en/microcontrollers-microprocessors/stm32h743xi.html)
 - [STM32H743I-EVAL board](https://www.st.com/en/evaluation-tools/stm32h743i-eval.html)

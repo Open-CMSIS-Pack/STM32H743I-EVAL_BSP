@@ -30,7 +30,7 @@ By default the [Board Layers](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL
 - Launch the STM32CubeMX generator with this CMSIS-Toolbox command:
   `csolution <solution_name>.csolution.yml run -g CubeMX -c <context>`
 - In STM32CubeMX:
-  - Open from the menu `Project Manager - Project - Toolcahain/IDE`:
+  - Open from the menu `Project Manager - Project - Toolchain/IDE`:
   - Select `STM32CubeIDE` and disable `Generate Under Root`.
   - Click `GENERATE CODE` to recreate the CubeMX generated files for the GCC compiler.
 
