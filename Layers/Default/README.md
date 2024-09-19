@@ -1,5 +1,6 @@
-Board: STMicroelectronics [STM32H743I-EVAL](https://www.st.com/en/evaluation-tools/stm32h743i-eval.html)
-------------------------------------------
+# Board: STMicroelectronics [STM32H743I-EVAL](https://www.st.com/en/evaluation-tools/stm32h743i-eval.html)
+
+## Board Layer
 
 Device: **STM32H743XIH6**
 System Core Clock: **400 MHz**
@@ -39,7 +40,6 @@ Refer to ["Configure STM32 Devices with CubeMX"](https://github.com/Open-CMSIS-P
 
 ## Board configuration
 
-**Board setup**
-  - Insure that the **JP10** is in the **PSU** position and connect 5V power supply to the **CN10** connector
-  - Check that the Boot selection switch **SW1** is in the **0** / default position
-  - Connect a **USB micro-B cable** between the **STLK** connector and your **Personal Computer**
+- Ensure that the **JP10** is in the **PSU** position and connect 5V power supply to the **CN10** connector
+- Check that the Boot selection switch **SW1** is in the **0** / default position
+- Connect a **USB micro-B cable** between the **STLK** connector and your **Host Computer**
