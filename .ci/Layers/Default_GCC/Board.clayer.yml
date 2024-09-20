@@ -55,6 +55,7 @@ layer:
   groups:
     - group: Board
       files:
+        - file: ./README.md
         - file: ./STM32H743I-EVAL.h
         - file: ./retarget_stdio.c
 
