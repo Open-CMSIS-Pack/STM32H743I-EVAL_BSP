@@ -10,23 +10,22 @@ The **STMicroelectronics STM32H743I-EVAL Board Support Pack (BSP)**:
 
 - [Examples/Blinky](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/Examples/Blinky) shows the basic usage of this board.
 
-- [Board Layer](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/Layers) for device-agonistic [Reference Applications](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/ReferenceApplications.md) that implements this API interfaces:
+- [Board Layer](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/Layers/Default) for device-agonistic [Reference Applications](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/ReferenceApplications.md) that provides the following connections:
 
-    Provided API Interface      | Description
-    :---------------------------|:----------------
-    CMSIS_ETH                   | CMSIS-Driver Ethernet Interface connected to \<physical resource\>
-    CMSIS_MCI                   | CMSIS-Driver MCI Interface to ...
-    CMSIS_USB_Device            | CMSIS-Driver Device Interface connected to 
-    CMSIS_USB_Host              | CMSIS-Driver Host Interface connected to 
-    CMSIS_VIO                   | CMSIS-Driver VIO connected to LED0 .. 3
-    STDIN, STDOUT, STDERR       | Standard I/O connected to 
-    Audrino with SPI and I2C    | Audrino Shield with SPI and I2C interface
+| Provided connection           | Description
+|:------------------------------|:------------------------------------------------------------------------------
+| CMSIS_ETH                     | CMSIS-Driver Ethernet connected to Ethernet RJ45 connector (CN1)
+| CMSIS_MCI                     | CMSIS-Driver MCI connected to microSD slot (CN13)
+| CMSIS_USB_Device              | CMSIS-Driver USB Device connected to USB OTG1 FS connector (CN18)
+| CMSIS_USB_Host                | CMSIS-Driver USB Host connected to USB OTG2 HS connector (CN14)
+| CMSIS_VIO                     | CMSIS-Driver VIO connected to LEDs (LD3, LD1) and Tamper button (B3)
+| STDIN, STDOUT, STDERR         | Standard I/O connected to Virtual COM port on ST-LINK connector (CN23)
 
 ## Using GCC Compiler
 
 By default the [Board Layers](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/Layers) are configured for the Arm Compiler 6 (AC6). Using STM32CubeMX it can be reconfigured for a different compiler. To configure it for the GCC compiler execute these steps:
 
-- In the `*.csolution.yml` project file select `compiler: GCC`.
+- In the `<solution_name>.csolution.yml` project file select `compiler: GCC`.
 - Launch the STM32CubeMX generator with this CMSIS-Toolbox command:
   `csolution <solution_name>.csolution.yml run -g CubeMX -c <context>`
 - In STM32CubeMX:
@@ -34,6 +33,6 @@ By default the [Board Layers](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL
   - Select `STM32CubeIDE` and disable `Generate Under Root`.
   - Click `GENERATE CODE` to recreate the CubeMX generated files for the GCC compiler.
 
-- In the `*.clayer.yml` file, update `linker:` node configuration to reference appropriate GCC linker script.
+- In the `Board.clayer.yml` file, update `linker:` node configuration to reference appropriate GCC linker script.
   The GCC linker script is typically generated in the `STM32CubeMX/STM32CubeIDE` folder. Customize the GCC linker script file to your project's requirements.
-- Rebuild the project using the CMSIS-Toolbox command `cbuild *.csolution.yml`.
+- Rebuild the project using the CMSIS-Toolbox command `cbuild <solution_name>.csolution.yml`.
