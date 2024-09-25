@@ -13,8 +13,8 @@ Refer to ["Configure STM32 Devices with CubeMX"](https://github.com/Open-CMSIS-P
 
 | System resource       | Setting
 |:----------------------|:--------------------------------------
-| Heap                  | 1 kB (configured in the STM32CubeMX)
-| Stack (MSP)           | 1 kB (configured in the STM32CubeMX)
+| Heap                  | 64 kB (configured in the STM32CubeMX)
+| Stack (MSP)           |  1 kB (configured in the STM32CubeMX)
 
 ### STDIO mapping
 
