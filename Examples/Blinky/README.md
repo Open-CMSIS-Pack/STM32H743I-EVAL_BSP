@@ -17,5 +17,5 @@ is available with various real-time operating systems, for example RTX5 or FreeR
 | CMSIS-Driver VIO      | Board component
 |:----------------------|:--------------------------------------
 | vioBUTTON0            | Tamper button (B3)
-| vioLED0               | LED Red       (LD3)
-| vioLED1               | LED Green     (LD1)
+| vioLED0               | LED red       (LD3)
+| vioLED1               | LED green     (LD1)

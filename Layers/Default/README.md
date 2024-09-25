@@ -26,7 +26,7 @@ Refer to ["Configure STM32 Devices with CubeMX"](https://github.com/Open-CMSIS-P
 |:----------------------|:----------------------|:----------------------------------------------|:------------------------------
 | Driver_ETH_MAC0       | ETH                   | Ethernet RJ45 connector (CN1)                 | CMSIS_ETH
 | Driver_ETH_PHY0       | LAN8742A (external)   | Ethernet RJ45 connector (CN1)                 | CMSIS_ETH
-| Driver_MCI1           | SDMMC1                | MicroSD slot (CN13)                           | CMSIS_MCI
+| Driver_MCI1           | SDMMC1                | MicroSD card slot (CN13)                      | CMSIS_MCI
 | Driver_USART1         | USART1                | ST-LINK connector (CN23)                      | STDIN, STDOUT, STDERR
 | Driver_USBD0          | USB_OTG_FS            | USB OTG1 FS connector (CN18)                  | CMSIS_USB_Device
 | Driver_USBH1          | USB_OTG_HS            | USB OTG2 HS connector (CN14)                  | CMSIS_USB_Host
@@ -37,5 +37,5 @@ Refer to ["Configure STM32 Devices with CubeMX"](https://github.com/Open-CMSIS-P
 | CMSIS-Driver VIO      | Board component
 |:----------------------|:--------------------------------------
 | vioBUTTON0            | Tamper button (B3)
-| vioLED0               | LED Red       (LD3)
-| vioLED1               | LED Green     (LD1)
+| vioLED0               | LED red       (LD3)
+| vioLED1               | LED green     (LD1)
