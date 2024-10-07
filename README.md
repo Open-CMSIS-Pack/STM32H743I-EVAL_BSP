@@ -7,7 +7,7 @@
 
 This is the development repository for the **STMicroelectronics STM32H743I-EVAL Board Support Pack (BSP)** - a CMSIS software pack that is designed to work with all compiler toolchains (Arm Compiler, GCC, IAR, LLVM). It is released as [CMSIS software pack](https://www.keil.arm.com/packs/stm32h743i-eval_bsp-keil) and therefore accessible by CMSIS-Pack enabled software development tools.
 
-This BSP uses the generator integration of the [CMSIS-Toolbox to Configure STM32 Devices with CubeMX](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/CubeMX.md) that is also supported in µVision 5.40 an higher.
+This BSP uses the generator integration of the [CMSIS-Toolbox to Configure STM32 Devices with CubeMX](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/CubeMX.md) that is also supported in µVision 5.40 and higher.
 
 > **Note:** This is currently Work in Progress. Final release is expected in Q3'2024.
 
