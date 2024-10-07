@@ -18,7 +18,7 @@
       Board description for STM32H743I-EVAL
       Default Board Layer
       Blinky example (CMSIS Solution)
-      Drivers:
+      CMSIS Drivers:
       - CMSIS-Driver VIO
     </release>
   </releases>
@@ -78,7 +78,7 @@
            salesContact="https://www.st.com/content/st_com/en/contact-us.html">
       <description>STM32 Evaluation development board with STM32H743XIHx MCU</description>
       <image small="Images/stm32h743i-eval_small.png"
-             large="Images/stm32h743i-eval_large.png" public="true"/>
+             large="Images/stm32h743i-eval_large.png"/>
       <book category="overview"  name="https://www.st.com/en/evaluation-tools/stm32h743i-eval.html" title="STM32H743I_EVAL Board"/>
       <book category="overview"  name="https://www.st.com/resource/en/data_brief/stm32h743i-eval.pdf" title="Data Brief"/>
       <book category="manual"    name="https://www.st.com/resource/en/user_manual/um2198-evaluation-boards-with-stm32h743xi-and-stm32h753xi-mcus-stmicroelectronics.pdf" title="User Manual"/>
