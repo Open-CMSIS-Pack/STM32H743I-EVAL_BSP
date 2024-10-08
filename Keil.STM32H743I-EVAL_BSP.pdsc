@@ -2,7 +2,7 @@
 <package schemaVersion="1.7.36" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/v1.7.36/schema/PACK.xsd">
   <name>STM32H743I-EVAL_BSP</name>
   <vendor>Keil</vendor>
-  <description overview="Documentation/OVERVIEW.md">STMicroelectronics STM32H7 Series STM32H743I-EVAL Board Support Pack</description>
+  <description overview="Documents/OVERVIEW.md">STMicroelectronics STM32H7 Series STM32H743I-EVAL Board Support Pack</description>
   <url>https://www.keil.com/pack/</url>
   <repository type="git">https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP.git</repository>
   <license>LICENSE</license>
