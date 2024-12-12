@@ -1,5 +1,6 @@
 [![Version](https://img.shields.io/github/v/release/Open-CMSIS-Pack/STM32H743I-EVAL_BSP)](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/releases/latest)
-[![License](https://img.shields.io/github/license/Open-CMSIS-Pack/STM32H743I-EVAL_BSP?label)](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/blob/main/LICENSE)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-green?label)](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/blob/main/LICENSE-Apache-2.0)
+[![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD--3--Clause-green?label)](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/blob/main/LICENSE-BSD-3-Clause)
 [![Examples Build Test](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/Test-Examples.yml?logo=arm&logoColor=0091bd&label=Examples%20Build%20Test)](./.ci)
 [![MDK-Middleware Build Test](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/Test-MDK-Middleware-RefApps.yml?logo=arm&logoColor=0091bd&label=MDK-Middleware%20Build%20Test)](./.ci)
 

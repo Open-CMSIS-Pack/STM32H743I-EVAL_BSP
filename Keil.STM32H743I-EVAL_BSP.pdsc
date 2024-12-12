@@ -5,15 +5,16 @@
   <description overview="Documents/OVERVIEW.md">STMicroelectronics STM32H7 Series STM32H743I-EVAL Board Support Pack</description>
   <url>https://www.keil.com/pack/</url>
   <repository type="git">https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP.git</repository>
-  <license>LICENSE</license>
+  <license>LICENSES</license>
   <licenseSets>
     <licenseSet id="all" default="true" gating="true">
-      <license name="LICENSE" title="Apache 2.0 open-source license" spdx="Apache-2.0"/>
+      <license title="Apache-2.0 License for CMSIS add-ons"                  name="LICENSE-Apache-2.0"   spdx="Apache-2.0"/>
+      <license title="BSD-3-Clause License for STMicroelectronics STM32 HAL" name="LICENSE-BSD-3-Clause" spdx="BSD-3-Clause"/>
     </licenseSet>
   </licenseSets>
 
   <releases>
-    <release version="1.0.1-dev">
+    <release version="1.0.2-dev">
       Active development ...
       Blinky project:
       - specify thread names using thread attributes
@@ -22,6 +23,10 @@
       - add DWARF-5 debug information
       - add RTE_Components.h files
       - add dbgconf files for the Blinky example.	  
+      Reorganized Licenses:
+      - LICENSES (combined license file: Apache-2.0 and BSD-3-Clause)
+      - LICENSE-Apache-2.0 (for CMSIS add-ons)
+      - LICENSE-BSD-3-Clause (for STM32 HAL)
     </release>
   </releases>
 
