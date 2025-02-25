@@ -4,7 +4,7 @@
 
 The STM32H743I-EVAL and STM32H753I-EVAL Evaluation boards (STM32H7x3I-EVAL) are high-end development platforms for the Arm® Cortex®-M7-based STM32H743XI and STM32H753XI microcontrollers, respectively. The STM32H7x3I-EVAL Evaluation boards provide access to all the STM32 peripherals for user applications, and include an embedded ST-LINK debugger/programmer.
 
-The full range of the STM32H7x3I-EVAL hardware features helps develop applications and evaluate all peripherals: USB OTG_HS and FS, Ethernet, FD-CAN, USART, Audio DAC and ADC, digital microphone, SRAM, SDRAM, NOR Flash memory, Twin Quad-SPI Flash memory, microSD™ 3.0 card, 5.7” 640×480 TFT color LCD with touchscreen, and cryptographic hardware accelerator (available only on STM32H753XI devices).
+The full range of the STM32H7x3I-EVAL hardware features helps develop applications and evaluate all peripherals: USB OTG_HS and FS, Ethernet, FD-CAN, USART, Audio DAC and ADC, digital microphone, SRAM, SDRAM, NOR Flash memory, Twin Quad-SPI Flash memory, microSD™ 3.0 card, 5.7" 640×480 TFT color LCD with touchscreen, and cryptographic hardware accelerator (available only on STM32H753XI devices).
 
 The expansion connectors provide an easy way to add specialized features, while ETM trace is supported through external probes.
 

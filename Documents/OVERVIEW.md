@@ -2,7 +2,7 @@
 
 The **STMicroelectronics STM32H743I-EVAL Board Support Pack (BSP)**:
 
-- Contains examples and board layers in *csolution format* for usage with the [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/README.md) and the  [VS Code CMSIS Solution](https://marketplace.visualstudio.com/items?itemName=Arm.cmsis-csolution) extension.
+- Contains examples and board layers in *csolution format* for usage with the [CMSIS-Toolbox](https://open-cmsis-pack.github.io/cmsis-toolbox/) and the  [VS Code CMSIS Solution](https://marketplace.visualstudio.com/items?itemName=Arm.cmsis-csolution) extension.
 - Requires the [Device Family Pack (DFP) for the STM32H7 series](https://www.keil.arm.com/packs/stm32h7xx_dfp-keil).
 - Is configured with [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html) for the Arm Compiler 6 (MDK). [Using GCC Compiler](#using-gcc-compiler) explains how to configured it for a different compiler.
 
@@ -10,7 +10,7 @@ The **STMicroelectronics STM32H743I-EVAL Board Support Pack (BSP)**:
 
 - [Examples/Blinky](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/Examples/Blinky) shows the basic usage of this board.
 
-- [Board Layer](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/Layers/Default) for device-agnostic [Reference Applications](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/ReferenceApplications.md) that implements these API interfaces:
+- [Board Layer](https://github.com/Open-CMSIS-Pack/STM32H743I-EVAL_BSP/tree/main/Layers/Default) for device-agnostic [Reference Applications](https://open-cmsis-pack.github.io/cmsis-toolbox/ReferenceApplications/) that implements these API interfaces:
 
 | Provided API Interface        | Description
 |:------------------------------|:------------------------------------------------------------------------------
