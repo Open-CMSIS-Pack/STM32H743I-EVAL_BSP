@@ -7,7 +7,7 @@ Device: **STM32H743XIH6**
 System Core Clock: **400 MHz**
 
 This setup is configured using **STM32CubeMX**, an interactive tool provided by STMicroelectronics for device configuration.
-Refer to ["Configure STM32 Devices with CubeMX"](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/CubeMX.md) for additional information.
+Refer to ["Configure STM32 Devices with CubeMX"](https://open-cmsis-pack.github.io/cmsis-toolbox/CubeMX/) for additional information.
 
 ### System Configuration
 
