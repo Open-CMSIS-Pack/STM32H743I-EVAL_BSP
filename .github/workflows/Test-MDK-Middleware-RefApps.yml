@@ -95,18 +95,35 @@ jobs:
         run: |
           cp -rf ${{ matrix.solution.layer_ac6 }}/* ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/   # Copy the Board layer
 
-      - name: ${{ matrix.solution.name }} AC6 build test
+      - name: ${{ matrix.solution.name }} AC6 build test (Release)
         if: always()
         working-directory: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
         run: |
-          cbuild ./${{ matrix.solution.name }}.csolution.yml --update-rte --packs \
-          --toolchain AC6 --rebuild
+          cbuild ./${{ matrix.solution.name }}.csolution.yml --context .Release+* \
+          --update-rte --packs --toolchain AC6 --rebuild
 
-      - name: Upload Artifact of the ${{ matrix.solution.name }} AC6 build
+      - name: Upload Artifact of the ${{ matrix.solution.name }} AC6 build (Release)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.solution.name }}_AC6
+          name: ${{ matrix.solution.name }}_AC6_Release
+          path: |
+            ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
+            !./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/tmp/
+          retention-days: 1
+
+      - name: ${{ matrix.solution.name }} AC6 build test (Debug)
+        if: always()
+        working-directory: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
+        run: |
+          cbuild ./${{ matrix.solution.name }}.csolution.yml --context .Debug+* \
+          --update-rte --packs --toolchain AC6 --rebuild
+
+      - name: Upload Artifact of the ${{ matrix.solution.name }} AC6 build (Debug)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.solution.name }}_AC6_Debug
           path: |
             ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
             !./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/tmp/
@@ -119,20 +136,39 @@ jobs:
           rm -rf ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/*
           cp -rf ${{ matrix.solution.layer_gcc }}/* ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/   # Copy the Board layer
 
-      - name: ${{ matrix.solution.name }} GCC build test
+      - name: ${{ matrix.solution.name }} GCC build test (Release)
         if: always()
         working-directory: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
         run: |
           rm -rf out
           rm -rf tmp
-          cbuild ./${{ matrix.solution.name }}.csolution.yml --update-rte --packs \
-          --toolchain GCC --rebuild
+          cbuild ./${{ matrix.solution.name }}.csolution.yml --context .Release+* \
+          --update-rte --packs --toolchain GCC --rebuild
 
-      - name: Upload Artifact of the ${{ matrix.solution.name }} GCC build
+      - name: Upload Artifact of the ${{ matrix.solution.name }} GCC build (Release)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.solution.name }}_GCC
+          name: ${{ matrix.solution.name }}_GCC_Release
+          path: |
+            ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
+            !./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/tmp/
+          retention-days: 1
+
+      - name: ${{ matrix.solution.name }} GCC build test (Debug)
+        if: always()
+        working-directory: ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
+        run: |
+          rm -rf out
+          rm -rf tmp
+          cbuild ./${{ matrix.solution.name }}.csolution.yml --context .Debug+* \
+          --update-rte --packs --toolchain GCC --rebuild
+
+      - name: Upload Artifact of the ${{ matrix.solution.name }} GCC build (Debug)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.solution.name }}_GCC_Debug
           path: |
             ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/
             !./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/tmp/
