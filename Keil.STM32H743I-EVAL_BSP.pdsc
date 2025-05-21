@@ -85,7 +85,6 @@
       <book category="schematic" name="https://www.st.com/resource/en/schematic_pack/mb1246-b0x_schematic.pdf" title="Schematics"/>
       <book category="other"     name="Documents/README.md" title="Guide"/>
       <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32H743XIHx"/>
-      <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32H743"/>
       <feature type="ODbg"      n="1"              name="On-board ST-LINK/V2"/>
       <feature type="RAM"       n="1"              name="8M x 32-bit SDRAM"/>
       <feature type="RAM"       n="1"              name="1M x 16-bit SRAM"/>
