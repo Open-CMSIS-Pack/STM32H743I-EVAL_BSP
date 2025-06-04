@@ -26,12 +26,12 @@ layer:
     - CMSIS_target_header: \"STM32H743I-EVAL.h\"
 
   packs:
-    - pack: Keil::STM32H7xx_DFP@>=4.0.0-0
-    - pack: Keil::STM32H743I-EVAL_BSP@>=1.0.0-0
-    - pack: ARM::CMSIS-Driver_STM32@>=1.0.0-0
-    - pack: ARM::CMSIS-Driver@>=2.8.0-0
-    - pack: ARM::CMSIS@>=6.0.0
-    - pack: ARM::CMSIS-Compiler@>=2.0.0
+    - pack: Keil::STM32H7xx_DFP@^4.0.0-0
+    - pack: Keil::STM32H743I-EVAL_BSP@^1.0.0-0
+    - pack: ARM::CMSIS-Driver_STM32@^1.0.0-0
+    - pack: ARM::CMSIS-Driver@^2.8.0-0
+    - pack: ARM::CMSIS@^6.0.0
+    - pack: ARM::CMSIS-Compiler@^2.0.0
 
   components:
     - component: Device:CubeMX

@@ -7,14 +7,22 @@ solution:
   select-compiler:
     - compiler: AC6
 
+  # List of miscellaneous tool-specific controls
+  misc:
+    - for-compiler: AC6
+      C-CPP:
+        - -gdwarf-5
+      ASM:
+        - -gdwarf-5
+
   # List the packs that define the device and/or board.
   packs:
-    - pack: Keil::STM32H7xx_DFP@>=4.0.0-0
-    - pack: Keil::STM32H743I-EVAL_BSP@>=1.0.0-0
-    - pack: ARM::CMSIS-Driver_STM32@>=1.0.0-0
-    - pack: ARM::CMSIS@>=6.0.0
-    - pack: ARM::CMSIS-RTX@>=5.9.0
-    - pack: ARM::CMSIS-Compiler@>=2.0.0
+    - pack: Keil::STM32H7xx_DFP@^4.0.0-0
+    - pack: Keil::STM32H743I-EVAL_BSP@^1.0.0-0
+    - pack: ARM::CMSIS-Driver_STM32@^1.0.0-0
+    - pack: ARM::CMSIS@^6.0.0
+    - pack: ARM::CMSIS-RTX@^5.9.0
+    - pack: ARM::CMSIS-Compiler@^2.0.0
 
   # List different hardware targets that are used to deploy the solution.
   target-types:

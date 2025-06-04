@@ -1,6 +1,11 @@
 # A project translates into one executable or library.
 project:
 
+  # Project define
+  define:
+    - OS_IDLE_THREAD_NAME: \"Idle\"
+    - OS_TIMER_THREAD_NAME: \"Timer\"
+
   # List components to use for your application.
   # A software component is a re-usable unit that may be configurable.
   components:

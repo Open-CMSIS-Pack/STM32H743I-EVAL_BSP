@@ -13,13 +13,14 @@
   </licenseSets>
 
   <releases>
-    <release version="1.0.0-dev">
-      Prepared for new CMSIS-Toolbox CubeMX integration
-      Board description for STM32H743I-EVAL
-      Default Board Layer
-      Blinky example (CMSIS Solution)
-      CMSIS Drivers:
-      - CMSIS-Driver VIO
+    <release version="1.0.1-dev">
+      Active development ...
+      Blinky project:
+      - specify thread names using thread attributes
+      - rename thread IDs
+      - modify app_main_thread (replace loop forever)
+      - add DWARF-5 debug information
+      - add RTE_Components.h files
     </release>
   </releases>
 
