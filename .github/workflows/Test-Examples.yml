@@ -68,7 +68,7 @@ jobs:
         if: always()
         working-directory: ./CI/Examples/Blinky
         run: |
-          cbuild ./Blinky.csolution.yml --packs --update-rte --packs --toolchain AC6 --rebuild
+          cbuild ./Blinky.csolution.yml --packs --toolchain AC6 --rebuild
 
       - name: Upload Artifact of the Blinky AC6 build
         if: always()
