@@ -21,6 +21,7 @@
       - modify app_main_thread (replace loop forever)
       - add DWARF-5 debug information
       - add RTE_Components.h files
+      - add dbgconf files for the Blinky example.	  
     </release>
   </releases>
 
