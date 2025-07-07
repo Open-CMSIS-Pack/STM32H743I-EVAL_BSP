@@ -61,6 +61,7 @@ jobs:
       - name: Copy Blinky example to CI/Examples/ folder
         working-directory: ./
         run: |
+          mkdir -p ./CI/Examples/Blinky
           cp -a ./BSP/Examples/Blinky/. ./CI/Examples/Blinky/
 
       - name: Build Blinky AC6
