@@ -62,9 +62,7 @@ jobs:
         working-directory: ./
         run: |
           mkdir -p ./CI/Examples/Blinky
-          shopt -s dotglob  # include dotfiles in wildcards          
-          cp -rf ./BSP/Examples/Blinky/* ./CI/Examples/Blinky/
-          shopt -u dotglob  # disable it again
+          cp -a ./BSP/Examples/Blinky/. ./CI/Examples/Blinky/
 
       - name: Build Blinky AC6
         if: always()
