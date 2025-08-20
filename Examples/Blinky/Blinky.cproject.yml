@@ -41,3 +41,10 @@ project:
     - script:  ./RTE/Device/STM32H743XIHx/ac6_linker_script.sct.src
       regions: ./RTE/Device/STM32H743XIHx/regions_STM32H743I-EVAL.h
       for-compiler: AC6
+
+  # List executable file formats to be generated.
+  output:
+    type:
+      - elf
+      - hex
+      - map

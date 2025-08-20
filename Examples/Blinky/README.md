@@ -9,7 +9,9 @@ is available with various real-time operating systems, for example RTX5 or FreeR
 
 ## Operation
 
-- At start the vioLED0 blinks in 1 sec interval.
+- At start
+  - outputs "Blinky Example" to UART that is connected to ST-Link (baudrate 115200bps)
+  - blinks vioLED0 in 1 sec interval.
 - The vioBUTTON0 changes the blink frequency and start/stops vioLED1.
 
 ### CMSIS-Driver Virtual I/O mapping
