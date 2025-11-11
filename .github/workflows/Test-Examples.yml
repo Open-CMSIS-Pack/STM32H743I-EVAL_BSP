@@ -14,7 +14,8 @@ jobs:
       fail-fast: false
 
     runs-on: ubuntu-latest
-
+    outputs:
+      build_status: ${{ steps.build_step.outcome }}
     steps:
       - name: Checkout .ci folder
         uses: actions/checkout@v4
@@ -26,6 +27,22 @@ jobs:
         uses: ARM-software/cmsis-actions/vcpkg@v1
         with:
           config: "./.ci/vcpkg-configuration.json"
+        continue-on-error: false
+
+      - name: Capture vcpkg activation output
+        if: always()
+        run: |
+          mkdir -p logs
+          echo "=== vcpkg Artifacts Activation ===" > logs/vcpkg_artifacts.log
+          cd $(dirname ".ci/vcpkg-configuration.json")
+          vcpkg activate 2>&1 | tee -a $GITHUB_WORKSPACE/logs/vcpkg_artifacts.log || echo "vcpkg activate failed" >> $GITHUB_WORKSPACE/logs/vcpkg_artifacts.log
+
+      - name: Upload tool logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tool-logs
+          path: logs/
 
       - name: Activate Arm tool license
         uses: ARM-software/cmsis-actions/armlm@v1
@@ -67,6 +84,7 @@ jobs:
       - name: Build Blinky AC6
         if: always()
         working-directory: ./CI/Examples/Blinky
+        id: build_step
         run: |
           cbuild ./Blinky.csolution.yml --packs --toolchain AC6 --rebuild
 
@@ -79,3 +97,103 @@ jobs:
             ./CI/Examples/Blinky/
             !./CI/Examples/Blinky/tmp/
           retention-days: 1
+
+  CollectData:
+    runs-on: ubuntu-latest
+    needs: Test-Examples
+    if: always()
+    steps:
+      - name: Download tool logs
+        uses: actions/download-artifact@v4
+        with:
+          name: tool-logs
+          path: logs/
+
+      - name: Parse and collect data
+        run: |
+          # Parse vcpkg artifacts log
+          if [ -f logs/vcpkg_artifacts.log ]; then
+            echo "Parsing vcpkg artifacts log..."
+            cat logs/vcpkg_artifacts.log
+          else
+            echo "No vcpkg artifacts log found"
+          fi
+
+      - name: Generate JSON report
+        run: |
+          cat << 'EOF' > collect_data.py
+          import json
+          import re
+          from datetime import datetime
+
+          def parse_vcpkg_artifacts_log(log_path):
+              cmsis_toolbox_info = None
+              try:
+                  with open(log_path, 'r') as f:
+                      content = f.read()
+
+                  # Parse the vcpkg artifacts table for cmsis-toolbox
+                  # Looking for line like: "arm:tools/open-cmsis-pack/cmsis-toolbox 2.12.0   will install"
+                  match = re.search(r'arm:tools/open-cmsis-pack/cmsis-toolbox\s+(\S+)\s+', content)
+                  if match:
+                      version = match.group(1)
+                      cmsis_toolbox_info = {
+                          "version": version,
+                          "tool": "cmsis-toolbox"
+                      }
+
+              except FileNotFoundError:
+                  print("vcpkg artifacts log file not found")
+              except Exception as e:
+                  print(f"Error parsing vcpkg artifacts log: {e}")
+
+              return cmsis_toolbox_info
+
+          # Collect data
+          data = {
+              "workflow": "CubeMX: Test Build",
+              "repo": "${{ github.repository }}",
+              "run_id": "${{ github.run_id }}",
+              "build_job": {
+                  "last_run": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                  "status": "${{ needs.Test-Examples.outputs.build_status }}",
+                  "passed": "${{ needs.Test-Examples.outputs.build_status }}" == "success"
+              },
+              "cmsis_toolbox": parse_vcpkg_artifacts_log("logs/vcpkg_artifacts.log")
+          }
+
+          # Print JSON
+          print(json.dumps(data, indent=2))
+
+          # Save to file
+          with open('workflow_data.json', 'w') as f:
+              json.dump(data, f, indent=2)
+          EOF
+
+          python3 collect_data.py
+
+      - name: Display collected data
+        id: collected_data
+        run: |
+          echo "json=$(jq -c '.' workflow_data.json)" >> "$GITHUB_OUTPUT"
+          echo "=== Workflow Data Collection ==="
+          cat workflow_data.json
+
+      - name: Upload workflow data
+        uses: actions/upload-artifact@v4
+        with:
+          name: workflow-data
+          path: workflow_data.json
+
+      - name: Emit to central repo
+        uses: peter-evans/repository-dispatch@v4
+        with:
+          token: ${{ secrets.METRICS_PAT }}       # PAT or GitHub App token
+          repository: soumeh01/test_ts_app        # <-- your central repo
+          event-type: ci_metrics
+          client-payload: |
+            {
+              "source": "${{ github.repository }}",
+              "workflow": "Test-Examples: Build",
+              "metrics": ${{ steps.collected_data.outputs.json }}
+            }
