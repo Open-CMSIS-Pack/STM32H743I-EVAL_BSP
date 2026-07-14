@@ -27,7 +27,7 @@ jobs:
 
     steps:
       - name: Checkout .ci folder
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           sparse-checkout: |
             .ci
@@ -41,24 +41,24 @@ jobs:
         uses: ARM-software/cmsis-actions/armlm@v1
 
       - name: Checkout current repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           path: ./BSP
 
       - name: Checkout STM32H7xx_DFP
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: Open-CMSIS-Pack/STM32H7xx_DFP
           path: ./DFP
 
       - name: Checkout MDK-Middleware
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: ARM-software/MDK-Middleware
           path: ./MDK-Middleware
 
       - name: Checkout CMSIS-Driver_STM32
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: Open-CMSIS-Pack/CMSIS-Driver_STM32
           path: ./Drivers
@@ -109,7 +109,7 @@ jobs:
 
       - name: Upload Artifact of the ${{ matrix.solution.name }} AC6 build (Release)
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.solution.name }}_AC6_Release
           path: |
@@ -126,7 +126,7 @@ jobs:
 
       - name: Upload Artifact of the ${{ matrix.solution.name }} AC6 build (Debug)
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.solution.name }}_AC6_Debug
           path: |
@@ -152,7 +152,7 @@ jobs:
 
       - name: Upload Artifact of the ${{ matrix.solution.name }} GCC build (Release)
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.solution.name }}_GCC_Release
           path: |
@@ -171,7 +171,7 @@ jobs:
 
       - name: Upload Artifact of the ${{ matrix.solution.name }} GCC build (Debug)
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.solution.name }}_GCC_Debug
           path: |
